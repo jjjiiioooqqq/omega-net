@@ -1,0 +1,11 @@
+opencv-python
+mediapipe
+numpy
+scipy
+tqdm
+torch
+torchvision
+torchaudio
+transformers
+pillow
+git+https://github.com/facebookresearch/segment-anything.git
