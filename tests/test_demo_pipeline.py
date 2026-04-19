@@ -1,15 +1,8 @@
-from pathlib import Path
-
-import pytest
-
-pytest.importorskip("numpy")
-pytest.importorskip("sympy")
-pytest.importorskip("z3")
-
-from engint.pipeline.demo import run_demo
+from engineering_intelligence.demo.pipeline import run_demo
 
 
-def test_demo_pipeline(tmp_path: Path):
-    result = run_demo(tmp_path / "demo_audit.json")
-    assert result["classification"] in {"legendary", "provisional", "unverified", "folkloric"}
-    assert len(result["survivors"]) >= 1
+def test_demo_pipeline_runs() -> None:
+    output = run_demo()
+    assert output["selected_design"]["architecture_id"] == "design_A"
+    assert output["closure"]["classification"] in {"unverified", "provisional", "legendary", "folkloric"}
+    assert "audit" in output
