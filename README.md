@@ -69,6 +69,40 @@ Run:
 python -m engineering_intelligence.demo.pipeline
 ```
 
+
+## PyCharm setup (recommended)
+
+1. Open the repository root in PyCharm.
+2. Create a Python 3.10+ interpreter/venv for the project.
+3. Install dependencies from files (works well with PyCharm package UI or terminal):
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+4. Run tests directly from PyCharm or terminal:
+
+```bash
+pytest
+```
+
+5. Run the demo (no PYTHONPATH editing required):
+
+```bash
+python examples/run_demo.py
+```
+
+Optional: if you install the package in editable mode (`pip install -e .`), you can
+also run:
+
+```bash
+python -m engineering_intelligence --output examples/demo_audit_output.json
+```
+
+The repo includes `tests/conftest.py` and a path-bootstrap in `examples/run_demo.py`
+so execution works in typical PyCharm run/test configurations without manual
+`PYTHONPATH` editing.
+
 ## Development
 
 Install dependencies (example with pip):

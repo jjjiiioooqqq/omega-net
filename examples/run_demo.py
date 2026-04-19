@@ -1,15 +1,21 @@
-"""Run demonstrator and emit machine-readable output."""
+"""Run demonstrator and emit machine-readable output.
+
+Compatible with PyCharm when project root is opened directly, even without an
+editable install, by adding the local `src/` directory to `sys.path`.
+"""
 
 from __future__ import annotations
 
-import json
+import sys
 from pathlib import Path
 
-from engineering_intelligence.demo.pipeline import run_demo
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+
+from engineering_intelligence.__main__ import main
 
 
 if __name__ == "__main__":
-    result = run_demo()
-    output_path = Path("examples") / "demo_audit_output.json"
-    output_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
-    print(f"Wrote {output_path}")
+    main()
