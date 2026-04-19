@@ -38,8 +38,11 @@ class AuditReport:
         }
 
 
-def _normalize_entry(text: str) -> str:
-    return text if text.strip() else "UNVERIFIED"
+def _normalize_entry(text: str, *, unknown_fallback: str = "UNVERIFIED") -> str:
+    stripped = text.strip()
+    if not stripped:
+        return unknown_fallback
+    return stripped
 
 
 def build_audit_report(
@@ -55,12 +58,12 @@ def build_audit_report(
 ) -> AuditReport:
     """Construct audit report while preserving explicit unknown labels."""
     sections = {
-        "ASSUMED": AuditSection([_normalize_entry(x) for x in assumed]),
-        "DERIVED": AuditSection([_normalize_entry(x) for x in derived]),
-        "VERIFIED": AuditSection([_normalize_entry(x) for x in verified]),
+        "ASSUMED": AuditSection([_normalize_entry(x, unknown_fallback="UNKNOWN") for x in assumed] or ["UNKNOWN"]),
+        "DERIVED": AuditSection([_normalize_entry(x) for x in derived] or ["UNVERIFIED"]),
+        "VERIFIED": AuditSection([_normalize_entry(x) for x in verified] or ["UNVERIFIED"]),
         "UNVERIFIED": AuditSection([_normalize_entry(x) for x in unverified] or ["UNVERIFIED"]),
-        "FAILURE_MODES": AuditSection([_normalize_entry(x) for x in failure_modes]),
-        "NEXT_TEST": AuditSection([_normalize_entry(x) for x in next_test]),
+        "FAILURE_MODES": AuditSection([_normalize_entry(x) for x in failure_modes] or ["UNVERIFIED"]),
+        "NEXT_TEST": AuditSection([_normalize_entry(x) for x in next_test] or ["UNVERIFIED"]),
     }
 
     missing = [s for s in REQUIRED_SECTIONS if s not in sections]

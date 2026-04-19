@@ -43,10 +43,14 @@ class KnowledgeGraph:
         self.graph.add_node(record.node_id, node_type=record.node_type, payload=record.payload)
 
     def add_edge(self, src: str, dst: str, relation: str) -> None:
+        if src not in self.graph or dst not in self.graph:
+            raise KeyError("Both source and destination nodes must exist before linking")
         self.graph.add_edge(src, dst, relation=relation)
 
     def has_provenance(self, claim_id: str) -> bool:
-        """Check whether claim traces to at least one citation, assumption, and solver output/equation."""
+        """Check whether claim traces to citation + assumptions + equation/solver outputs."""
+        if claim_id not in self.graph:
+            return False
         predecessors = nx.ancestors(self.graph, claim_id)
         types = {self.graph.nodes[n]["node_type"] for n in predecessors}
         return "citation" in types and "assumption" in types and (

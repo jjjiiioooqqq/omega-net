@@ -22,13 +22,14 @@
   "physics_result": {
     "case_id": "thermal_design_A",
     "model_type": "governing_equation",
-    "residual": 100.0,
+    "residual": 1.1236214865054664e-10,
     "metrics": {
       "grid_spacing": 0.05,
-      "max_abs_residual": 100.0
+      "max_abs_residual": 1.3640999441122403e-10,
+      "boundary_error": 0.0
     },
     "verified": true,
-    "notes": "Finite-difference PDE residual on linear trial field."
+    "notes": "Finite-difference PDE residual on analytic constant-source conduction profile."
   },
   "closure": {
     "classification": "unverified",
@@ -56,7 +57,7 @@
         "id": "solver_1",
         "type": "solver_output",
         "payload": {
-          "residual": 100.0
+          "residual": 1.1236214865054664e-10
         }
       },
       {
@@ -108,7 +109,7 @@
       },
       "DERIVED": {
         "entries": [
-          "PDE L2 residual = 100.000"
+          "PDE L2 residual = 0.000"
         ]
       },
       "VERIFIED": {
