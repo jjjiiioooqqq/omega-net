@@ -1,0 +1,145 @@
+{
+  "selected_design": {
+    "architecture_id": "design_A",
+    "variables": {
+      "power": 80.0,
+      "mass": 18.0,
+      "margin": 0.2,
+      "k": 10.0
+    },
+    "metadata": {}
+  },
+  "prune_result": {
+    "admissible_ids": [
+      "design_A"
+    ],
+    "rejected": {
+      "design_B": [
+        "power_cap"
+      ]
+    }
+  },
+  "physics_result": {
+    "case_id": "thermal_design_A",
+    "model_type": "governing_equation",
+    "residual": 100.0,
+    "metrics": {
+      "grid_spacing": 0.05,
+      "max_abs_residual": 100.0
+    },
+    "verified": true,
+    "notes": "Finite-difference PDE residual on linear trial field."
+  },
+  "closure": {
+    "classification": "unverified",
+    "reasons": [
+      "UNKNOWN carry present"
+    ]
+  },
+  "knowledge_graph": {
+    "nodes": [
+      {
+        "id": "assump_1",
+        "type": "assumption",
+        "payload": {
+          "text": "Steady-state 1D conduction"
+        }
+      },
+      {
+        "id": "eq_1",
+        "type": "equation",
+        "payload": {
+          "text": "k*d2T/dx2 + q = 0"
+        }
+      },
+      {
+        "id": "solver_1",
+        "type": "solver_output",
+        "payload": {
+          "residual": 100.0
+        }
+      },
+      {
+        "id": "cite_1",
+        "type": "citation",
+        "payload": {
+          "source": "Incropera textbook ref placeholder"
+        }
+      },
+      {
+        "id": "claim_1",
+        "type": "claim",
+        "payload": {
+          "text": "Residual below threshold"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "assump_1",
+        "target": "claim_1",
+        "relation": "supports"
+      },
+      {
+        "source": "eq_1",
+        "target": "claim_1",
+        "relation": "supports"
+      },
+      {
+        "source": "solver_1",
+        "target": "claim_1",
+        "relation": "supports"
+      },
+      {
+        "source": "cite_1",
+        "target": "claim_1",
+        "relation": "supports"
+      }
+    ]
+  },
+  "audit": {
+    "design_id": "design_A",
+    "sections": {
+      "ASSUMED": {
+        "entries": [
+          "Steady-state conduction",
+          "Constant thermal conductivity"
+        ]
+      },
+      "DERIVED": {
+        "entries": [
+          "PDE L2 residual = 100.000"
+        ]
+      },
+      "VERIFIED": {
+        "entries": [
+          "Hard constraints satisfied by Z3",
+          "Residual computed from governing equation discretization"
+        ]
+      },
+      "UNVERIFIED": {
+        "entries": [
+          "Material aging coefficient UNKNOWN",
+          "No experimental calibration yet"
+        ]
+      },
+      "FAILURE_MODES": {
+        "entries": [
+          "Thermal source term q mismatch",
+          "Boundary condition drift"
+        ]
+      },
+      "NEXT_TEST": {
+        "entries": [
+          "Run transient thermal test with measured heat flux"
+        ]
+      }
+    },
+    "metadata": {
+      "classification": "unverified",
+      "reasons": [
+        "UNKNOWN carry present"
+      ]
+    }
+  }
+}

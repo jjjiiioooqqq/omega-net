@@ -58,11 +58,16 @@ class SymbolicEngine:
         )
 
     def _is_dimensionless(self, expr: sp.Expr) -> bool:
-        # MVP sanity guard: relational/boolean constraints are treated as dimensionless.
-        relational = getattr(sp, "Relational", None)
-        boolean = getattr(sp, "Boolean", None)
-        types = tuple(t for t in (relational, boolean) if t is not None)
-        return isinstance(expr, types)
+        """Best-effort guard for constraints.
+
+        Relational and boolean expressions are admissible; numeric-only expressions
+        are rejected because they cannot constrain candidate variables.
+        """
+        if getattr(expr, "is_Relational", False):
+            return True
+        if isinstance(expr, (sp.logic.boolalg.BooleanFunction, sp.logic.boolalg.BooleanAtom)):
+            return True
+        return False
 
     def _sympy_to_z3(self, expr: sp.Expr, z3_vars: dict[str, z3.ArithRef]) -> z3.BoolRef:
         if isinstance(expr, sp.And):
