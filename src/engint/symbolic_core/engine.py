@@ -11,9 +11,10 @@ from .models import CandidateArchitecture, ConstraintSpec, PruneResult
 
 @dataclass(slots=True)
 class SymbolicEngine:
-    """Performs symbolic canonicalization and Z3-based kill-criteria pruning."""
+    """SymPy canonicalization + Z3 kill-criteria pruning for candidate architectures."""
 
     def canonicalize(self, expression: str) -> str:
+        """Return canonical SymPy representation for a constraint expression."""
         return str(sp.simplify(sp.sympify(expression)))
 
     def prune(
@@ -21,6 +22,7 @@ class SymbolicEngine:
         candidates: Iterable[CandidateArchitecture],
         constraints: list[ConstraintSpec],
     ) -> PruneResult:
+        """Reject candidates that violate any hard constraint (kill criteria)."""
         survivors: list[CandidateArchitecture] = []
         rejected: dict[str, list[str]] = {}
         canonical_forms = {c.name: self.canonicalize(c.expression) for c in constraints}
@@ -35,15 +37,16 @@ class SymbolicEngine:
 
             for constraint in constraints:
                 expr = sp.sympify(constraint.expression)
-                if not self._is_dimensionless(expr):
-                    failures.append(f"dimensionally invalid: {constraint.name}")
+                if not self._is_relational(expr):
+                    failures.append(f"kill:{constraint.name}:non_relational")
                     continue
                 z3_expr = self._sympy_to_z3(expr, z3_vars)
-                solver.push()
-                solver.add(z3.Not(z3_expr))
-                if solver.check() == z3.sat and constraint.kind == "hard":
-                    failures.append(f"kill:{constraint.name}")
-                solver.pop()
+                if constraint.kind == "hard":
+                    solver.push()
+                    solver.add(z3.Not(z3_expr))
+                    if solver.check() == z3.sat:
+                        failures.append(f"kill:{constraint.name}")
+                    solver.pop()
 
             if failures:
                 rejected[candidate.arch_id] = failures
@@ -55,16 +58,13 @@ class SymbolicEngine:
             rejected=rejected,
             canonical_forms=canonical_forms,
             satisfiable=len(survivors) > 0,
+            metadata={"kill_criteria": [c.name for c in constraints if c.kind == "hard"]},
         )
 
-    def _is_dimensionless(self, expr: sp.Expr) -> bool:
-        # MVP sanity guard: relational/boolean constraints are treated as dimensionless.
-        relational = getattr(sp, "Relational", None)
-        boolean = getattr(sp, "Boolean", None)
-        types = tuple(t for t in (relational, boolean) if t is not None)
-        return isinstance(expr, types)
+    def _is_relational(self, expr: sp.Expr) -> bool:
+        return isinstance(expr, sp.core.relational.Relational)
 
-    def _sympy_to_z3(self, expr: sp.Expr, z3_vars: dict[str, z3.ArithRef]) -> z3.BoolRef:
+    def _sympy_to_z3(self, expr: sp.Expr, z3_vars: dict[str, z3.ArithRef]) -> z3.ExprRef:
         if isinstance(expr, sp.And):
             return z3.And(*[self._sympy_to_z3(arg, z3_vars) for arg in expr.args])
         if isinstance(expr, sp.Or):
@@ -80,7 +80,10 @@ class SymbolicEngine:
         if isinstance(expr, sp.GreaterThan):
             return self._sympy_to_z3(expr.lhs, z3_vars) >= self._sympy_to_z3(expr.rhs, z3_vars)
         if isinstance(expr, sp.Symbol):
-            return z3_vars[str(expr)]
+            symbol = str(expr)
+            if symbol not in z3_vars:
+                raise ValueError(f"variable '{symbol}' missing from candidate")
+            return z3_vars[symbol]
         if isinstance(expr, sp.Number):
             return z3.RealVal(float(expr))
         if isinstance(expr, sp.Add):

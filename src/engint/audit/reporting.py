@@ -7,21 +7,25 @@ from pathlib import Path
 
 @dataclass(slots=True)
 class AuditBundle:
-    assumed: list[str] = field(default_factory=list)
-    derived: list[str] = field(default_factory=list)
-    verified: list[str] = field(default_factory=list)
-    unverified: list[str] = field(default_factory=list)
-    failure_modes: list[str] = field(default_factory=list)
-    next_test: list[str] = field(default_factory=list)
+    ASSUMED: list[str] = field(default_factory=list)
+    DERIVED: list[str] = field(default_factory=list)
+    VERIFIED: list[str] = field(default_factory=list)
+    UNVERIFIED: list[str] = field(default_factory=list)
+    FAILURE_MODES: list[str] = field(default_factory=list)
+    NEXT_TEST: list[str] = field(default_factory=list)
 
 
 class AuditWriter:
+    """Emit machine-readable audit reports with strict uncertainty labeling."""
+
     def build_bundle(self, **kwargs) -> AuditBundle:
-        return AuditBundle(**kwargs)
+        bundle = AuditBundle(**kwargs)
+        for section in ("ASSUMED", "DERIVED", "VERIFIED", "UNVERIFIED", "FAILURE_MODES", "NEXT_TEST"):
+            values = getattr(bundle, section)
+            setattr(bundle, section, [str(v) for v in values])
+        return bundle
 
     def write_json(self, bundle: AuditBundle, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        data = asdict(bundle)
-        # unknown markers are explicit and preserved.
         with path.open("w", encoding="utf-8") as fh:
-            json.dump(data, fh, indent=2)
+            json.dump(asdict(bundle), fh, indent=2)

@@ -1,3 +1,3 @@
-from .graph import DigitalThreadGraph, NodeRecord
+from .graph import DigitalThreadGraph, NodeRecord, NodeType
 
-__all__ = ["DigitalThreadGraph", "NodeRecord"]
+__all__ = ["DigitalThreadGraph", "NodeRecord", "NodeType"]

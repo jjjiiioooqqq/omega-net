@@ -23,7 +23,7 @@ class ClosureReport:
 
 
 class ClosureJudge:
-    """Explicit policy for legendary/provisional/unverified/folkloric classes."""
+    """Classify design closure from explicit engineering gate checks."""
 
     def evaluate(self, inputs: ClosureInputs) -> ClosureReport:
         checks = {
@@ -36,14 +36,15 @@ class ClosureJudge:
             "provenance_complete": inputs.provenance_complete,
             "unknowns_explicit": inputs.unknowns_explicit,
         }
-        blockers = [k for k, v in checks.items() if not v]
+        blockers = [name for name, ok in checks.items() if not ok]
 
         if all(checks.values()):
             classification = "legendary"
-        elif inputs.hard_constraints_ok and inputs.residual_ok and inputs.provenance_complete:
+        elif checks["hard_constraints_ok"] and checks["residual_ok"] and checks["provenance_complete"]:
             classification = "provisional"
-        elif inputs.hard_constraints_ok:
+        elif checks["hard_constraints_ok"]:
             classification = "unverified"
         else:
             classification = "folkloric"
+
         return ClosureReport(classification=classification, checks=checks, blockers=blockers)

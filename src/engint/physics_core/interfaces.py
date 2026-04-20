@@ -1,16 +1,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from enum import Enum
 from typing import Protocol
 
 import numpy as np
+
+
+class EvidenceTier(str, Enum):
+    GOVERNING = "governing"
+    SURROGATE = "surrogate"
+    LEARNED_UNVERIFIED = "learned_unverified"
 
 
 @dataclass(slots=True)
 class GoverningEquation:
     name: str
     equation_type: str
-    trusted: bool
+    evidence_tier: EvidenceTier
     notes: str
 
 
@@ -26,5 +33,7 @@ class PhysicsResult:
 
 
 class PhysicsSolver(Protocol):
+    """Base interface for solver wrappers (classical or differentiable)."""
+
     def evaluate(self, state: np.ndarray, dx: float, dt: float) -> PhysicsResult:
         ...

@@ -39,7 +39,7 @@ def test_pruning_and_judgement(tmp_path: Path):
     )
     assert report.classification == "legendary"
 
-    bundle = AuditWriter().build_bundle(assumed=["UNKNOWN: x"], verified=["v"])
+    bundle = AuditWriter().build_bundle(ASSUMED=["UNKNOWN: x"], VERIFIED=["v"])
     out = tmp_path / "audit.json"
     AuditWriter().write_json(bundle, out)
     assert out.exists()

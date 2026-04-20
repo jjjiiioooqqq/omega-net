@@ -6,12 +6,13 @@ import numpy as np
 
 from engint.audit import AuditWriter
 from engint.judge import ClosureInputs, ClosureJudge
-from engint.knowledge_graph import DigitalThreadGraph, NodeRecord
-from engint.physics_core import ThermalDiffusionResidualSolver
+from engint.knowledge_graph import DigitalThreadGraph, NodeRecord, NodeType
+from engint.physics_core import PlaceholderPhysicsSolver, ThermalDiffusionResidualSolver
 from engint.symbolic_core import CandidateArchitecture, ConstraintSpec, SymbolicEngine
 
 
 def run_demo(output_path: Path) -> dict[str, object]:
+    """End-to-end contradiction elimination and closure classification demo."""
     symbolic = SymbolicEngine()
     candidates = [
         CandidateArchitecture("arch_good", {"power": 80.0, "mass": 1.2, "margin": 0.15}),
@@ -33,15 +34,28 @@ def run_demo(output_path: Path) -> dict[str, object]:
     )
     physics = ThermalDiffusionResidualSolver(alpha=1.0e-5).evaluate(state=state, dx=0.1, dt=0.25)
 
+    # Explicit placeholders for unsupported domains to avoid pretending closure.
+    maxwell = PlaceholderPhysicsSolver("maxwell_stub", "maxwell").evaluate(np.zeros((2, 3)), dx=1.0, dt=1.0)
+    flow = PlaceholderPhysicsSolver("navier_stokes_stub", "flowfield").evaluate(np.zeros((2, 3)), dx=1.0, dt=1.0)
+
     graph = DigitalThreadGraph()
-    graph.add_node(NodeRecord("assumption_1", "assumption", {"text": "steady material alpha"}, ["demo_input"]))
-    graph.add_node(NodeRecord("equation_1", "equation", {"name": "thermal_diffusion_1d"}, ["textbook_ref"]))
-    graph.add_node(NodeRecord("claim_1", "claim", {"text": "architecture survives hard constraints"}, ["z3_result"]))
+    graph.add_node(NodeRecord("assumption_1", NodeType.ASSUMPTION, {"text": "constant alpha"}, ["demo_input"]))
+    graph.add_node(NodeRecord("equation_1", NodeType.EQUATION, {"name": "thermal_diffusion_1d"}, ["textbook_ref"]))
+    graph.add_node(
+        NodeRecord(
+            "claim_1",
+            NodeType.CLAIM,
+            {"text": "architecture survives hard constraints"},
+            ["z3_result"],
+            critical=True,
+        )
+    )
     graph.relate("assumption_1", "supports", "equation_1")
     graph.relate("equation_1", "supports", "claim_1")
 
-    judge = ClosureJudge()
-    closure = judge.evaluate(
+    provenance_complete = len(graph.claims_missing_provenance()) == 0 and len(graph.critical_nodes_missing_provenance()) == 0
+
+    closure = ClosureJudge().evaluate(
         ClosureInputs(
             residual_ok=physics.residual < 100.0,
             hard_constraints_ok=prune.satisfiable,
@@ -49,18 +63,23 @@ def run_demo(output_path: Path) -> dict[str, object]:
             manufacturable=True,
             controllable=True,
             power_thermal_closed=True,
-            provenance_complete=(len(graph.claims_missing_provenance()) == 0),
+            provenance_complete=provenance_complete,
             unknowns_explicit=True,
         )
     )
 
     audit = AuditWriter().build_bundle(
-        assumed=["alpha is treated constant and isotropic", "UNKNOWN: manufacturing tolerance model"],
-        derived=[f"survivor_count={len(prune.survivors)}", f"thermal_rms_residual={physics.residual:.6f}"],
-        verified=["Z3 hard constraints evaluated", "Finite-difference residual computed"],
-        unverified=["UNVERIFIED: external CFD/FEA correlation", "UNVERIFIED: closed-loop controller robustness"],
-        failure_modes=["thermal hotspot under boundary condition drift", "sensor dropout can invalidate controllability"],
-        next_test=["Run mesh-refined thermal solve", "Perform hardware-in-the-loop control test"],
+        ASSUMED=["alpha treated constant/isotropic", "UNKNOWN: manufacturing tolerance model"],
+        DERIVED=[f"survivor_count={len(prune.survivors)}", f"thermal_rms_residual={physics.residual:.6f}"],
+        VERIFIED=["Z3 hard constraints evaluated", "Finite-difference thermal residual computed"],
+        UNVERIFIED=[
+            "UNVERIFIED: Maxwell closure uses placeholder adapter",
+            "UNVERIFIED: Navier-Stokes closure uses placeholder adapter",
+            f"UNVERIFIED: {maxwell.solver_name} residual unavailable",
+            f"UNVERIFIED: {flow.solver_name} residual unavailable",
+        ],
+        FAILURE_MODES=["thermal hotspot with boundary drift", "sensor dropout can invalidate controllability"],
+        NEXT_TEST=["integrate external CFD/EM solvers", "perform hardware-in-the-loop control test"],
     )
     AuditWriter().write_json(audit, output_path)
 

@@ -1,68 +1,90 @@
-# Engineering Intelligence Foundation (engint)
+# Engineering Intelligence Foundation (`engint`)
 
-A truthful foundation for contradiction-elimination and design-closure, plus a mocap-less scene extraction bridge for Blender.
+`engint` is a Python foundation for **contradiction elimination and design closure**, not a conversational plausibility engine.
+It prioritizes:
+- invariant consistency,
+- hard contradiction detection,
+- physical closure checks,
+- explicit provenance,
+- explicit unknown labeling,
+- auditability.
 
-## Philosophy
-The system prioritizes invariant consistency, contradiction detection, physical closure, provenance, and testability over plausibility.
+## Architecture
 
-## Package structure
-- `symbolic_core/`: SymPy canonicalization + Z3 hard-constraint pruning with kill criteria.
-- `physics_core/`: extensible solver interface and 1D thermal diffusion residual demonstrator.
-- `optimization_core/`: admissible-region constrained continuous optimization.
-- `knowledge_graph/`: digital thread graph schema and provenance checks.
-- `judge/`: explicit closure classifier (`legendary`, `provisional`, `unverified`, `folkloric`).
-- `audit/`: machine-readable audit bundle writer with ASSUMED/DERIVED/VERIFIED/UNVERIFIED/FAILURE MODES/NEXT TEST.
-- `mocapless/`: scene processor for 2D video -> 3D manifest.
+- `symbolic_core/`
+  - SymPy canonicalization and expression handling.
+  - Z3 hard-constraint pruning with kill criteria.
+  - Candidate architectures are rejected on any violated hard constraint.
 
-## Folder layout
-```
-/workspace/omega-net
-  /input_video
-  /output_data
-  /blender_scripts
-  /examples
-  /src/engint
-  /tests
-```
+- `physics_core/`
+  - Extensible solver interfaces.
+  - Concrete thermal diffusion residual demonstrator (`dT/dt - alpha*d2T/dx2`).
+  - Explicit placeholders for Maxwell / Navier–Stokes / structural-style wrappers.
+  - Distinguishes governing vs surrogate vs learned-unverified evidence tiers.
 
-## Phase 1: setup commands
+- `optimization_core/`
+  - Admissible-region constrained optimizer.
+  - Objective helpers for minimizing residual/load and maximizing margin/metric.
+  - Optimization executes only when seed is admissible.
+
+- `knowledge_graph/`
+  - Local graph-backed digital thread via `networkx`.
+  - Explicit schema for assumptions, equations, constraints, geometry, solver outputs, experiments, materials, claims.
+  - Provenance checks for claims and critical nodes.
+
+- `judge/`
+  - Explicit closure policy classifying designs as:
+    - `legendary`,
+    - `provisional`,
+    - `unverified`,
+    - `folkloric`.
+
+- `audit/`
+  - Machine-readable audit output with required sections:
+    - `ASSUMED`, `DERIVED`, `VERIFIED`, `UNVERIFIED`, `FAILURE_MODES`, `NEXT_TEST`.
+  - Unknowns are expected to be explicitly labeled `UNKNOWN`/`UNVERIFIED` in content.
+
+- `pipeline/demo.py`
+  - End-to-end demonstrator:
+    1) define candidate architectures,
+    2) prune contradictions,
+    3) run simplified physics residual evaluation,
+    4) evaluate closure class,
+    5) emit audit report JSON.
+
+## Install
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -e '.[dev]'
-pip install opencv-python mediapipe torch torchvision numpy
-pip install git+https://github.com/facebookresearch/segment-anything.git
-# Optional for DepthAnything v2 integration entrypoint:
-# pip install timm einops
 ```
 
-## Run the engineering demonstrator
+## Run demonstrator
+
 ```bash
 python examples/run_demo.py
 cat output_data/demo_audit.json
 ```
 
-## Run mocap-less scene processor
+## Run tests
+
 ```bash
-python -c "from pathlib import Path; from engint.mocapless.scene_processor import SceneProcessor; SceneProcessor().process_video(Path('input_video/sample.mp4'), Path('output_data/scene_manifest.json'), (200,100,450,700))"
+pytest
 ```
 
-## Blender bridge
-Open Blender Scripting tab and run:
-```python
-from blender_scripts.import_manifest import main
-main('/absolute/path/to/output_data/scene_manifest.json')
-```
+## Explicit limitations (truthful scope)
 
-## Known limitations (explicit)
-- SAM integration currently uses bbox-mask fallback unless SAM checkpoint runtime wiring is added.
-- Depth estimator is currently a deterministic placeholder (grayscale proxy), not validated DepthAnything v2 inference.
-- Physics demonstrator is residual evaluation only and not a full PDE solve/validation loop.
-- Blender bridge currently animates root transform only.
+1. Thermal module is residual evaluation, not a full verified PDE solve/validation workflow.
+2. Maxwell/Navier/structural modules are explicit placeholders awaiting external solver wrappers.
+3. Judge thresholds are policy gates; they do not constitute empirical validation.
+4. Optimization is local gradient-based and not guaranteed globally optimal.
+5. Dimensional checks in symbolic constraints are minimal sanity checks (relational form), not full unit algebra.
 
-## Future integrations
-- Real SAM checkpoint loading and temporal mask propagation.
-- DepthAnything v2 torch wrapper with calibrated camera model.
-- Structured manufacturability/control constraints in symbolic core.
-- CFD/FEA external solver adapters with provenance capture.
+## Planned integrations
+
+1. External EM/CFD/FEA solver adapters with structured provenance capture.
+2. Unit-aware symbolic constraints with stronger dimensional analysis.
+3. Multi-fidelity optimization loops with robust uncertainty quantification.
+4. Experiment ingestion and calibration loop to transition from unverified to verified claims.

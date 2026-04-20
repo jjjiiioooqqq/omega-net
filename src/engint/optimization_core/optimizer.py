@@ -14,8 +14,26 @@ class OptimizationResult:
     message: str
 
 
+class Objectives:
+    @staticmethod
+    def minimize_residual(residual: Callable[[list[float]], float]) -> Callable[[list[float]], float]:
+        return lambda x: float(residual(x))
+
+    @staticmethod
+    def maximize_metric(metric: Callable[[list[float]], float]) -> Callable[[list[float]], float]:
+        return lambda x: -float(metric(x))
+
+    @staticmethod
+    def maximize_margin(margin: Callable[[list[float]], float]) -> Callable[[list[float]], float]:
+        return lambda x: -float(margin(x))
+
+    @staticmethod
+    def minimize_load(load: Callable[[list[float]], float]) -> Callable[[list[float]], float]:
+        return lambda x: float(load(x))
+
+
 class AdmissibleOptimizer:
-    """Continuous optimizer that accepts only symbolically admissible seeds."""
+    """Continuous optimizer that evaluates objective only in admissible region."""
 
     def optimize(
         self,
