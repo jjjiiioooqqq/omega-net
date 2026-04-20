@@ -74,11 +74,18 @@ def optimize_admissible(problem: OptimizationProblem) -> OptimizationResult:
     )
 
     x_map = {n: float(v) for n, v in zip(problem.variable_names, result.x, strict=True)}
+    is_admissible = problem.admissibility_fn(x_map)
+
     objective_value = float(-result.fun if maximize else result.fun)
+    success = bool(result.success) and is_admissible
+    message = str(result.message)
+    if not is_admissible:
+        objective_value = float("inf")
+        message = f"{message} | Rejected inadmissible optimizer output."
 
     return OptimizationResult(
-        success=bool(result.success),
+        success=success,
         x=x_map,
         objective_value=objective_value,
-        message=str(result.message),
+        message=message,
     )
