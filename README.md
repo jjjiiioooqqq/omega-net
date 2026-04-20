@@ -69,6 +69,22 @@ Run:
 python -m engineering_intelligence.demo.pipeline
 ```
 
+## Web dashboard
+
+You can run a local website that executes the same demonstrator pipeline and renders:
+- selected design,
+- closure classification,
+- physics result,
+- machine-readable audit output.
+
+Run:
+
+```bash
+python -m engineering_intelligence.web --host 127.0.0.1 --port 8000
+```
+
+Then open <http://127.0.0.1:8000>. Use **Re-run pipeline** to refresh results from `/api/demo`.
+
 
 ## PyCharm setup (recommended)
 
