@@ -1,0 +1,9 @@
+opencv-python==4.10.0.84
+mediapipe==0.10.14
+numpy==1.26.4
+torch==2.5.1
+torchvision==0.20.1
+segment-anything==1.0
+transformers==4.46.3
+scipy==1.14.1
+tqdm==4.67.1
