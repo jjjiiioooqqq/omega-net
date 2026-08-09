@@ -13,7 +13,7 @@ The system prioritizes invariant consistency, contradiction detection, physical 
 - `judge/`: explicit closure classifier (`legendary`, `provisional`, `unverified`, `folkloric`).
 - `audit/`: machine-readable audit bundle writer with ASSUMED/DERIVED/VERIFIED/UNVERIFIED/FAILURE MODES/NEXT TEST.
 - `mocapless/`: scene processor for 2D video -> 3D manifest.
-- `spatial_audio/`: SoF-inity speaker-array rendering — acoustic mapping (time-alignment + level compensation from measured geometry) and spatiotemporal multiplexing (sample-interpolated VBAP for moving sources) with Gerzon energy-vector localization metrics.
+- `spatial_audio/`: SoF-inity speaker-array rendering — acoustic mapping (time-alignment + level compensation from measured geometry), spatiotemporal multiplexing (sample-interpolated VBAP for moving sources), physical propagation (exact Doppler via emission-time delay, ISO 9613-1 air absorption, shoebox image-source reflections), and Gerzon energy-vector localization metrics.
 
 ## Folder layout
 ```
@@ -68,7 +68,7 @@ main('/absolute/path/to/output_data/scene_manifest.json')
 - Depth estimator is currently a deterministic placeholder (grayscale proxy), not validated DepthAnything v2 inference.
 - Physics demonstrator is residual evaluation only and not a full PDE solve/validation loop.
 - Blender bridge currently animates root transform only.
-- SoF-inity pans in the horizontal plane only (speaker elevation is measured but unused), and models no Doppler, air absorption, or room reflections.
+- SoF-inity pans in the horizontal plane only (speaker and path elevation collapse to azimuth). Reflections are specular shoebox image sources with uniform, frequency-independent wall absorption; air absorption is block-wise zero-phase (no dispersion); supersonic radial closing speeds are rejected rather than modeled.
 
 ## Future integrations
 - Real SAM checkpoint loading and temporal mask propagation.
