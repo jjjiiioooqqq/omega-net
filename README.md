@@ -13,6 +13,7 @@ The system prioritizes invariant consistency, contradiction detection, physical 
 - `judge/`: explicit closure classifier (`legendary`, `provisional`, `unverified`, `folkloric`).
 - `audit/`: machine-readable audit bundle writer with ASSUMED/DERIVED/VERIFIED/UNVERIFIED/FAILURE MODES/NEXT TEST.
 - `mocapless/`: scene processor for 2D video -> 3D manifest.
+- `spatial_audio/`: SoF-inity speaker-array rendering — acoustic mapping (time-alignment + level compensation from measured geometry) and spatiotemporal multiplexing (sample-interpolated VBAP for moving sources) with Gerzon energy-vector localization metrics.
 
 ## Folder layout
 ```
@@ -48,6 +49,13 @@ cat output_data/demo_audit.json
 python -c "from pathlib import Path; from engint.mocapless.scene_processor import SceneProcessor; SceneProcessor().process_video(Path('input_video/sample.mp4'), Path('output_data/scene_manifest.json'), (200,100,450,700))"
 ```
 
+## Run the SoF-inity spatial audio demo
+```bash
+python examples/run_sofinity_demo.py
+# writes output_data/sofinity_demo_8ch.wav (8-channel speaker feeds)
+# and output_data/sofinity_demo_metrics.json (localization + level metrics)
+```
+
 ## Blender bridge
 Open Blender Scripting tab and run:
 ```python
@@ -60,6 +68,7 @@ main('/absolute/path/to/output_data/scene_manifest.json')
 - Depth estimator is currently a deterministic placeholder (grayscale proxy), not validated DepthAnything v2 inference.
 - Physics demonstrator is residual evaluation only and not a full PDE solve/validation loop.
 - Blender bridge currently animates root transform only.
+- SoF-inity pans in the horizontal plane only (speaker elevation is measured but unused), and models no Doppler, air absorption, or room reflections.
 
 ## Future integrations
 - Real SAM checkpoint loading and temporal mask propagation.
