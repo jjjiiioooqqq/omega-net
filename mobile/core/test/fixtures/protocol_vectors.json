@@ -1,0 +1,58 @@
+[
+  {
+    "name": "set_alignment_typical",
+    "frame_type": "SetAlignment",
+    "fields": {
+      "delay_us": 1458,
+      "gain_q15": 16384
+    },
+    "hex": "01b20500000040"
+  },
+  {
+    "name": "set_alignment_extremes",
+    "frame_type": "SetAlignment",
+    "fields": {
+      "delay_us": 4294967295,
+      "gain_q15": 32767
+    },
+    "hex": "01ffffffffff7f"
+  },
+  {
+    "name": "gain_frame_typical",
+    "frame_type": "GainFrame",
+    "fields": {
+      "seq": 513,
+      "timestamp_us": 1699999999123456,
+      "gain_q15": 8192
+    },
+    "hex": "02010200e01018240a06000020"
+  },
+  {
+    "name": "gain_frame_zero",
+    "frame_type": "GainFrame",
+    "fields": {
+      "seq": 0,
+      "timestamp_us": 0,
+      "gain_q15": 0
+    },
+    "hex": "02000000000000000000000000"
+  },
+  {
+    "name": "sync_ping",
+    "frame_type": "SyncPing",
+    "fields": {
+      "t1_us": 123456789012
+    },
+    "hex": "03141a99be1c000000"
+  },
+  {
+    "name": "sync_pong",
+    "frame_type": "SyncPong",
+    "fields": {
+      "t1_us": 123456789012,
+      "t2_us": 123456790500,
+      "t3_us": 123456791000
+    },
+    "hex": "04141a99be1c000000e41f99be1c000000d82199be1c000000"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "SoF-inity",
+    "slug": "sofinity",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "net.omeganet.sofinity",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "SoF-inity connects to your speakers over Bluetooth to measure the array and steer spatial audio."
+      }
+    },
+    "android": {
+      "package": "net.omeganet.sofinity",
+      "permissions": [
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false,
+          "modes": ["central"]
+        }
+      ]
+    ]
+  }
+}

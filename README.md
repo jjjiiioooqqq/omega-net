@@ -49,6 +49,12 @@ cat output_data/demo_audit.json
 python -c "from pathlib import Path; from engint.mocapless.scene_processor import SceneProcessor; SceneProcessor().process_video(Path('input_video/sample.mp4'), Path('output_data/scene_manifest.json'), (200,100,450,700))"
 ```
 
+## SoF-inity mobile app
+`mobile/` contains a React Native (Expo) app that drives a SoF-inity speaker array over Bluetooth LE: the phone computes the acoustic map and streams per-speaker alignment + gain schedules over a documented GATT protocol, while program audio reaches speakers as a shared stream (see `mobile/README.md` for why A2DP forbids per-speaker audio streaming and how the design works within that). The BLE codec exists in both TypeScript (`mobile/core`) and Python (`engint.spatial_audio.ble_protocol`, the speaker-firmware reference), locked together by shared golden test vectors.
+```bash
+cd mobile/core && npm install && npm test
+```
+
 ## Run the SoF-inity spatial audio demo
 ```bash
 python examples/run_sofinity_demo.py

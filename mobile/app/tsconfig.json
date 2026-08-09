@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@sofinity/core": ["../core/src"]
+    }
+  },
+  "include": ["App.tsx", "src"]
+}
