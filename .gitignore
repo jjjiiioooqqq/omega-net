@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 .pytest_cache/
 output_data/*.json
+.env
+ai_bridge_workspace/transcripts/
