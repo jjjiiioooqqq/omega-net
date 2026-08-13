@@ -18,6 +18,7 @@ from .cognition import (
     cognition_roi,
 )
 from .curriculum import CURRICULUM, Curriculum, CurriculumStage
+from .events import TRIGGER_KINDS, EventRouter, RoutedInvestigation, SourceEvent
 from .evidence import Document, DocumentStore
 from .evolution import ALIVE, CHAMPION, EXTINCT, UNTESTED, Archive, EvolutionEngine, LineageRecord
 from .failure import FailureMemory, FailureRecord, Lesson
@@ -41,6 +42,7 @@ from .knowledge import (
 )
 from .memory import Episode, EpisodeLog, MemorySystem
 from .predictions import Prediction, PredictionFrozen, PredictionLedger, Resolution
+from .runtime import EngineRecord, EngineRegistry
 from .skills import Skill, SkillLibrary
 from .validation import (
     MARKET_EVENTS,
@@ -62,6 +64,7 @@ __all__ = [
     "EXTINCT",
     "MARKET_EVENTS",
     "RELATIONS",
+    "TRIGGER_KINDS",
     "UNTESTED",
     "WEALTH_LADDER",
     "AdaptiveComprehension",
@@ -76,8 +79,11 @@ __all__ = [
     "CurriculumStage",
     "Document",
     "DocumentStore",
+    "EngineRecord",
+    "EngineRegistry",
     "Episode",
     "EpisodeLog",
+    "EventRouter",
     "EvolutionEngine",
     "Experiment",
     "ExperimentFrozen",
@@ -101,7 +107,9 @@ __all__ = [
     "PredictionLedger",
     "ProblemProfile",
     "Resolution",
+    "RoutedInvestigation",
     "SealedBenchmark",
+    "SourceEvent",
     "Skill",
     "SkillLibrary",
     "SourceRecord",

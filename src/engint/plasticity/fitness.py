@@ -86,6 +86,8 @@ class FitnessReport:
     inputs: FitnessInputs
     intelligence: IntelligenceVector
     benchmark_seal: str
+    unsupported_claims: int = 0
+    safety_violations: int = 0
 
 
 class Phenotype(Protocol):
@@ -127,7 +129,11 @@ class SealedBenchmark:
         research_cost: float = 1.0,
         decision_latency: float = 1.0,
         intelligence: IntelligenceVector | None = None,
+        safety_violations: int = 0,
     ) -> FitnessReport:
+        """Score a phenotype. `safety_violations` is reported by the external
+        harness (never the phenotype itself) and gates promotion regardless
+        of the fitness score."""
         self.verify_seal()
         correct = 0
         hallucinated = 0
@@ -154,4 +160,6 @@ class SealedBenchmark:
             inputs=inputs,
             intelligence=intelligence or IntelligenceVector(research=accuracy),
             benchmark_seal=self.seal,
+            unsupported_claims=hallucinated,
+            safety_violations=safety_violations,
         )

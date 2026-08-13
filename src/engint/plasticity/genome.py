@@ -59,6 +59,7 @@ class Genome:
     tool_policies: dict[str, str] = field(default_factory=dict)  # T
     research_strategy: tuple[str, ...] = ()  # R: ordered retrieval steps
     agent_organization: tuple[str, ...] = ()  # A: species/subagent roster
+    model_routing: dict[str, str] = field(default_factory=dict)  # domain -> engine name
     species: str = "generalist"
 
     @staticmethod
@@ -79,6 +80,7 @@ class Genome:
             blueprint=dict(self.blueprint),
             memory_policy=dict(self.memory_policy),
             tool_policies=dict(self.tool_policies),
+            model_routing=dict(self.model_routing),
         )
 
 
@@ -106,6 +108,14 @@ class Mutator:
         self.constitution.check_target(key)
         child = genome.descend()
         child.memory_policy[key] = value
+        return child
+
+    def mutate_model_routing(self, genome: Genome, domain: str, engine: str) -> Genome:
+        """Route a task domain to a different engine; the routing choice is
+        itself selected on benchmarks, never on an engine's self-report."""
+        self.constitution.check_target(domain)
+        child = genome.descend()
+        child.model_routing[domain] = engine
         return child
 
     def add_skill(self, genome: Genome, skill_id: str) -> Genome:

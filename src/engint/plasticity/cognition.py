@@ -12,22 +12,28 @@ class ProblemProfile:
     """Inputs to the cognitive-budget formula, each in [0, 1]."""
 
     complexity: float  # D
-    importance: float  # I: consequence of being wrong
+    importance: float  # S: stakes / consequence of being wrong
     novelty: float  # N
     failure_rate: float  # F: historical failure rate on similar problems
     uncertainty: float  # U: unresolved uncertainty
+    irreversibility: float = 0.0  # I: how hard the action is to undo
 
 
 @dataclass(frozen=True, slots=True)
 class BudgetPolicy:
-    """B = B0 * (1 + aD + bI + cN + dF + eU)."""
+    """B = B0 * (1 + aD + bS + cN + dF + eU + zI).
+
+    Model confidence is deliberately not an input: the controller changes the
+    environment around the model, not the model's self-assessment.
+    """
 
     base_budget: float = 1.0
     alpha: float = 1.0  # complexity
-    beta: float = 2.0  # importance dominates: cheap mistakes stay cheap
+    beta: float = 2.0  # stakes dominate: cheap mistakes stay cheap
     gamma: float = 0.5  # novelty
     delta: float = 1.5  # prior failure -> more care around intellectual scars
     epsilon: float = 1.0  # uncertainty
+    zeta: float = 2.0  # irreversibility weighs like stakes: undoable is cheap
 
     def budget(self, profile: ProblemProfile) -> float:
         return self.base_budget * (
@@ -37,6 +43,7 @@ class BudgetPolicy:
             + self.gamma * profile.novelty
             + self.delta * profile.failure_rate
             + self.epsilon * profile.uncertainty
+            + self.zeta * profile.irreversibility
         )
 
 

@@ -104,23 +104,49 @@ class EvolutionEngine:
         self,
         child: Genome,
         phenotype_factory: Callable[[Genome], Phenotype],
+        safety_violations: int = 0,
     ) -> LineageRecord:
-        """Evaluate a descendant against its parent; keep it only if fitter."""
+        """Evaluate a descendant; keep it only if it clears every promotion gate.
+
+        A higher fitness score alone never promotes: unsupported claims must
+        not increase, safety violations must be zero, and the benchmark seal
+        must be intact. No mutation receives credit merely because another
+        model says it is better.
+        """
         parent = self.archive.records.get(child.parent_id or "")
         if parent is None or parent.report is None:
             raise ValueError("descendant has no evaluated parent in the archive")
         record = self.archive.add(child)
-        record.report = self.benchmark.evaluate(child.genome_id, phenotype_factory(child))
-        if record.report.score > parent.report.score:
-            record.status = ALIVE
-            champion = self.archive.records[self.archive.champion_id]
-            if champion.report is None or record.report.score > champion.report.score:
-                champion.status = ALIVE
-                record.status = CHAMPION
-                self.archive.champion_id = child.genome_id
-        else:
+        record.report = self.benchmark.evaluate(
+            child.genome_id, phenotype_factory(child), safety_violations=safety_violations
+        )
+        reason = self._rejection_reason(record.report, parent.report)
+        if reason is not None:
             record.status = EXTINCT
-            record.extinction_reason = (
-                f"fitness {record.report.score:.3f} <= parent {parent.report.score:.3f}"
-            )
+            record.extinction_reason = reason
+            return record
+        record.status = ALIVE
+        champion = self.archive.records[self.archive.champion_id]
+        if (
+            champion.report is not None
+            and record.report.score > champion.report.score
+            and record.report.unsupported_claims <= champion.report.unsupported_claims
+        ):
+            champion.status = ALIVE
+            record.status = CHAMPION
+            self.archive.champion_id = child.genome_id
         return record
+
+    def _rejection_reason(self, report, parent_report) -> str | None:
+        if report.benchmark_seal != self.benchmark.seal:
+            return "benchmark integrity failure"
+        if report.safety_violations > 0:
+            return f"{report.safety_violations} safety violation(s)"
+        if report.unsupported_claims > parent_report.unsupported_claims:
+            return (
+                f"unsupported claims {report.unsupported_claims} > "
+                f"parent {parent_report.unsupported_claims}"
+            )
+        if report.score <= parent_report.score:
+            return f"fitness {report.score:.3f} <= parent {parent_report.score:.3f}"
+        return None

@@ -71,9 +71,17 @@ Components:
 - `fitness`: hash-sealed holdout benchmarks (`SealedBenchmark`, tamper-detecting),
   the fitness ratio, and the 8-dimension `IntelligenceVector` `[R,V,Q,F,P,S,L,C]`
   with per-dimension deltas — never a single fake IQ.
-- `evolution`: Darwin-Gödel-style archive; a descendant survives only if
-  `F(child) > F(parent)` on unseen tests; lineage tree rendering with extinct
-  branches preserved as scar tissue.
+- `evolution`: Darwin-Gödel-style archive; a descendant survives only if it
+  clears every promotion gate on unseen tests — higher fitness alone never
+  promotes: unsupported claims must not increase, safety violations must be
+  zero, and the benchmark seal must be intact. Lineage tree rendering keeps
+  extinct branches as scar tissue.
+- `runtime`: model-agnostic `EngineRegistry` — Claude is the first primary
+  engine, not an irreversible dependency; engines compete on identical sealed
+  benchmarks and routing follows measured scores, never self-report.
+- `events`: sentinel-based operation — watch → detect change → materiality →
+  wake cognition. Immaterial events never spend inference; material ones route
+  through the C0–C6 controller (budget now includes irreversibility, ζI).
 - `knowledge`: verification-gated knowledge objects `K = (C,S,Q,T,A)` with the
   UNVERIFIED → SUPPORTED → REINFORCED / CONTRADICTED → SUPERSEDED lifecycle,
   typed relations, weighted edges (`w += ηV − λC`), temporal decay, and a
