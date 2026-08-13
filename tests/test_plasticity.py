@@ -52,6 +52,9 @@ class TestConstitution:
             mutator.mutate_blueprint(genome, "benchmark_selection", "use easier tests")
         with pytest.raises(ConstitutionViolation):
             mutator.mutate_research_strategy(genome, ("skip source_verification checks",))
+        # A protected directive must not enter under an innocuous key either.
+        with pytest.raises(ConstitutionViolation):
+            mutator.mutate_blueprint(genome, "style", "disable human_approval boundaries")
 
     def test_allowed_mutation_creates_descendant(self):
         constitution = Constitution(benchmark_seal="x")
@@ -120,6 +123,12 @@ class TestFitnessAndEvolution:
         benchmark._cases = benchmark._cases[:1]  # the evolved agent cheats
         with pytest.raises(BenchmarkTampered):
             benchmark.evaluate("G-x", lambda case: case.expected)
+
+    def test_sealed_benchmark_detects_scorer_swap(self):
+        benchmark = make_benchmark()
+        benchmark._scorer = lambda case, answer: True  # everything "passes"
+        with pytest.raises(BenchmarkTampered):
+            benchmark.evaluate("G-x", lambda case: "wrong")
 
     def test_fitness_formula_floors_denominator(self):
         perfect = FitnessInputs(1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -291,10 +300,19 @@ class TestPredictionsAndFirewall:
     def test_ledger_freezes_and_scores(self):
         ledger = PredictionLedger()
         p = ledger.commit("payment arrives", 0.1, "cleared $600 within 21 days", now=NOW)
-        ledger.resolve(p.prediction_id, outcome=False, now=NOW)
+        resolution = ledger.resolve(p.prediction_id, outcome=False, now=NOW)
         with pytest.raises(Exception):
             ledger.resolve(p.prediction_id, outcome=True, now=NOW)  # no history rewriting
+        with pytest.raises(Exception):
+            resolution.outcome = True  # resolutions are frozen objects
         assert ledger.brier_score() == pytest.approx(0.01)
+
+    def test_ledger_preserves_supplied_ids_and_rejects_duplicates(self):
+        ledger = PredictionLedger()
+        ledger.commit("x", 0.1, "cond", now=NOW, prediction_id="PRD-003")
+        assert "PRD-003" in ledger.predictions
+        with pytest.raises(Exception):
+            ledger.commit("y", 0.2, "cond", now=NOW, prediction_id="PRD-003")
 
     def test_firewall_rejects_research_evidence(self):
         firewall = MarketValidationFirewall()
@@ -319,6 +337,16 @@ class TestPredictionsAndFirewall:
         exp.record_result("zero payments")
         with pytest.raises(ExperimentFrozen):
             exp.record_result("actually one payment")
+
+    def test_aborted_experiment_cannot_restart(self):
+        from engint.plasticity import Experiment
+
+        exp = Experiment("EXP-A", "h", "not h", "m", denominator=12, status="aborted",
+                         result="superseded before sending")
+        with pytest.raises(ExperimentFrozen):
+            exp.start()
+        with pytest.raises(ExperimentFrozen):
+            exp.abort("again")
 
 
 class TestSkillsAndCurriculum:
@@ -363,9 +391,13 @@ class TestGenerationZero:
         # EXP-002 denominator frozen at 30 and untouched.
         assert g0.experiments["EXP-002"].denominator == 30
         assert not g0.experiments["EXP-002"].started
-        # PRD-003 frozen at 0.10, unresolved.
-        prd3 = [p for p in g0.memory.predictive.predictions.values() if "$600" in p.statement]
-        assert len(prd3) == 1 and prd3[0].probability == pytest.approx(0.10)
+        # EXP-001's historical abort is preserved and immutable.
+        assert g0.experiments["EXP-001"].status == "aborted"
+        with pytest.raises(ExperimentFrozen):
+            g0.experiments["EXP-001"].start()
+        # PRD-003 keeps its corpus id, frozen at 0.10, unresolved.
+        prd3 = g0.memory.predictive.predictions["PRD-003"]
+        assert prd3.probability == pytest.approx(0.10)
         assert not g0.memory.predictive.resolutions
         # No market validation: research artifacts cannot fabricate demand.
         assert not g0.firewall.validated
@@ -390,3 +422,18 @@ class TestGenerationZero:
             if d.get("node_type") == "company"
         ]
         assert len(companies) == 30
+
+    def test_g0_rejects_tampered_oracle_file(self, tmp_path):
+        import shutil
+
+        from engint.plasticity.bootstrap import CorpusIntegrityError
+
+        tampered = tmp_path / "g0"
+        shutil.copytree(CORPUS, tampered)
+        oracle_path = tampered / "ORACLE_COMPARISON.json"
+        content = oracle_path.read_text(encoding="utf-8")
+        # Silently improve the recorded recall; the frozen digest in
+        # strategy-state.json must catch this.
+        oracle_path.write_text(content.replace('"recall": 1.0', '"recall": 0.99'), encoding="utf-8")
+        with pytest.raises(CorpusIntegrityError):
+            load_generation_zero(tampered)

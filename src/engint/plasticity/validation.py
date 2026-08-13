@@ -66,7 +66,8 @@ class Experiment:
 
     The denominator is stored before the experiment begins. No changing the
     sample because the result looks bad; no inventing a new KPI afterward;
-    no calling weak signals validation.
+    no calling weak signals validation. A historical disposition (aborted,
+    completed) is immutable: the experiment cannot be restarted or rescored.
     """
 
     experiment_id: str
@@ -75,11 +76,19 @@ class Experiment:
     metric: str
     denominator: int
     interpretation_rules: tuple[str, ...] = ()
-    started: bool = False
+    status: str = "designed"  # designed | active | completed | aborted
     result: str | None = None
 
+    @property
+    def started(self) -> bool:
+        return self.status != "designed"
+
     def start(self) -> None:
-        self.started = True
+        if self.status != "designed":
+            raise ExperimentFrozen(
+                f"experiment is '{self.status}'; only a designed experiment can start"
+            )
+        self.status = "active"
 
     def amend_denominator(self, value: int) -> None:
         if self.started:
@@ -87,11 +96,18 @@ class Experiment:
         self.denominator = value
 
     def record_result(self, result: str) -> None:
-        if not self.started:
-            raise ExperimentFrozen("cannot record a result before the experiment starts")
-        if self.result is not None:
-            raise ExperimentFrozen("result already recorded; experiments are not rescored")
+        if self.status != "active":
+            raise ExperimentFrozen(
+                f"cannot record a result on a '{self.status}' experiment"
+            )
         self.result = result
+        self.status = "completed"
+
+    def abort(self, reason: str) -> None:
+        if self.status in ("completed", "aborted"):
+            raise ExperimentFrozen(f"experiment is already '{self.status}'")
+        self.result = reason
+        self.status = "aborted"
 
 
 @dataclass(slots=True)

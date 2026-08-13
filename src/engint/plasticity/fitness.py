@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import marshal
 from dataclasses import asdict, dataclass
 from typing import Callable, Protocol
 
@@ -111,16 +112,31 @@ class SealedBenchmark:
     ) -> None:
         self._cases = cases
         self._scorer = scorer or (lambda case, answer: answer.strip() == case.expected)
-        self.seal = self._compute_seal(cases)
+        self.seal = self._compute_seal(cases, self._scorer)
 
     @staticmethod
-    def _compute_seal(cases: tuple[BenchmarkCase, ...]) -> str:
+    def _fingerprint_scorer(scorer: Callable[[BenchmarkCase, str], bool]) -> str:
+        # The scoring rule is part of the fitness test: swapping the scorer
+        # must break the seal just as editing the cases does. Function
+        # bytecode gives a stable in-process fingerprint; other callables
+        # fall back to their repr (stable within a process).
+        code = getattr(scorer, "__code__", None)
+        payload = marshal.dumps(code) if code is not None else repr(scorer).encode("utf-8")
+        return hashlib.sha256(payload).hexdigest()
+
+    @classmethod
+    def _compute_seal(
+        cls,
+        cases: tuple[BenchmarkCase, ...],
+        scorer: Callable[[BenchmarkCase, str], bool],
+    ) -> str:
         payload = json.dumps([asdict(c) for c in cases], sort_keys=True)
-        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+        combined = payload + "|scorer:" + cls._fingerprint_scorer(scorer)
+        return hashlib.sha256(combined.encode("utf-8")).hexdigest()
 
     def verify_seal(self) -> None:
-        if self._compute_seal(self._cases) != self.seal:
-            raise BenchmarkTampered("benchmark cases no longer match their seal")
+        if self._compute_seal(self._cases, self._scorer) != self.seal:
+            raise BenchmarkTampered("benchmark cases or scorer no longer match their seal")
 
     def evaluate(
         self,

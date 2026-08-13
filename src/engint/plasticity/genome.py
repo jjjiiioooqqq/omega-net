@@ -92,7 +92,10 @@ class Mutator:
         self.rng = random.Random(seed)
 
     def mutate_blueprint(self, genome: Genome, key: str, value: str) -> Genome:
+        # Both key and value are screened: a protected directive must not
+        # enter the genome under an innocuous key.
         self.constitution.check_target(key)
+        self.constitution.check_target(value)
         child = genome.descend()
         child.blueprint[key] = value
         return child

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -59,8 +61,34 @@ class GenerationZero:
         return "\n".join(lines)
 
 
+class CorpusIntegrityError(RuntimeError):
+    """Raised when a corpus file does not match a frozen digest recorded in
+    the strategy state."""
+
+
 def _parse_ts(value: str) -> datetime:
     return datetime.fromisoformat(value)
+
+
+def _verify_frozen_digests(corpus_dir: Path, state: dict) -> None:
+    """Cross-check corpus files against trusted digests inside the state file.
+
+    The strategy state is the trust root (it has no external anchor), but the
+    oracle comparison it cites must hash to the digest frozen in SRC-027 —
+    otherwise an altered recall figure could silently flow into the
+    transfer-tested lesson.
+    """
+    notes = " ".join(src.get("notes", "") for src in state.get("coverage", []))
+    match = re.search(r"Oracle-comparison SHA-256 ([0-9a-f]{64})", notes)
+    if match is None:
+        raise CorpusIntegrityError("strategy state records no frozen oracle-comparison digest")
+    expected = match.group(1)
+    actual = hashlib.sha256((corpus_dir / "ORACLE_COMPARISON.json").read_bytes()).hexdigest()
+    if actual != expected:
+        raise CorpusIntegrityError(
+            f"ORACLE_COMPARISON.json sha256 {actual} does not match the frozen "
+            f"digest {expected} recorded in strategy-state.json"
+        )
 
 
 def load_generation_zero(corpus_dir: Path) -> GenerationZero:
@@ -75,6 +103,7 @@ def load_generation_zero(corpus_dir: Path) -> GenerationZero:
     cohort = json.loads(
         (corpus_dir / "final_30_prospect_cohort.redacted.json").read_text(encoding="utf-8")
     )
+    _verify_frozen_digests(corpus_dir, state)
 
     # --- immutable evidence store: hash the corpus files unchanged ---
     documents = DocumentStore()
@@ -163,6 +192,7 @@ def load_generation_zero(corpus_dir: Path) -> GenerationZero:
             resolution_condition="per pre-registered interpretation rules",
             evidence=tuple(prd.get("evidence_ids", ())),
             now=_parse_ts(prd["recorded_at"]),
+            prediction_id=prd["id"],  # experiments reference PRD-* ids
         )
 
     # --- failure memory: diagnosed mechanisms, not outcomes ---
@@ -286,6 +316,7 @@ def load_generation_zero(corpus_dir: Path) -> GenerationZero:
 
     experiments: dict[str, Experiment] = {}
     for exp in state["experiments"]:
+        aborted = exp.get("status") == "aborted"
         experiment = Experiment(
             experiment_id=exp["id"],
             hypothesis=exp["hypothesis"],
@@ -293,6 +324,10 @@ def load_generation_zero(corpus_dir: Path) -> GenerationZero:
             metric="cleared prepayment or funded escrow within pre-registered ceilings",
             denominator=30 if exp["id"] == "EXP-002" else 12,
             interpretation_rules=tuple(exp.get("interpretation_rules", ())),
+            # A historical disposition is immutable: EXP-001 was aborted
+            # (superseded before sending) and must not be restartable.
+            status="aborted" if aborted else "designed",
+            result=exp.get("result") if aborted else None,
         )
         experiments[experiment.experiment_id] = experiment
 

@@ -24,8 +24,10 @@ class Prediction:
     seal: str
 
 
-@dataclass(slots=True)
+@dataclass(frozen=True, slots=True)
 class Resolution:
+    """Immutable: an outcome, once recorded, cannot be edited in place."""
+
     prediction_id: str
     outcome: bool
     resolved_at: datetime
@@ -62,12 +64,18 @@ class PredictionLedger:
         resolution_condition: str,
         evidence: tuple[str, ...] = (),
         now: datetime | None = None,
+        prediction_id: str | None = None,
     ) -> Prediction:
+        """`prediction_id` lets reconstructed corpus predictions keep their
+        original identifiers (e.g. PRD-003) so experiment records that
+        reference them stay resolvable."""
         if not 0.0 <= probability <= 1.0:
             raise ValueError("probability must be in [0, 1]")
+        if prediction_id is not None and prediction_id in self.predictions:
+            raise PredictionFrozen(f"prediction id '{prediction_id}' already exists")
         committed_at = now or datetime.now(timezone.utc)
         prediction = Prediction(
-            prediction_id=f"P-{uuid.uuid4().hex[:8]}",
+            prediction_id=prediction_id or f"P-{uuid.uuid4().hex[:8]}",
             statement=statement,
             probability=probability,
             committed_at=committed_at,
