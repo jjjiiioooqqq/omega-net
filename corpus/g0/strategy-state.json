@@ -1,0 +1,1348 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-10T00:13:57+00:00",
+  "updated_at": "2026-08-12T08:56:00+00:00",
+  "objective": {
+    "desired_outcome": "Maximize the credible speed to multimillionaire-level liquid or transferable founder wealth in the 2026 economy, without a fabricated deadline or guarantee, using AI automation to cap cash downside while preserving majority-owned nonlinear upside.",
+    "horizon": "Open-ended; optimize time to first paid signal, repeatable owner-independent revenue, and transferable equity rather than a fixed $2 million/36-month headline.",
+    "controllable_success_measures": [
+      "Reject candidates before build when exact incumbents, access restrictions, or target-scale support physics fail.",
+      "Require buyer-originated exact-gap evidence and paid behavior before treating any candidate as selected.",
+      "Keep exploratory demonstrations synthetic, read-only, reversible, and inside the frozen time/cash gates.",
+      "Separate cash/skill evidence, paid willingness-to-pay evidence, repeated-bottleneck evidence, and transferable-equity evidence.",
+      "Proceed autonomously through internal research, construction, and verification; pause only for external sending, publication, account/terms acceptance, purchase, or live-system testing."
+    ]
+  },
+  "constraints": {
+    "hours_per_week": 25.0,
+    "cash_budget": 500.0,
+    "currency": "USD",
+    "skills": [
+      "AI-assisted research, writing, and automation",
+      "Asynchronous outbound after explicit approval"
+    ],
+    "location": null,
+    "risk_limits": [
+      "No private customer data or restricted credentials during exploratory demonstrations",
+      "No external send, publication, purchase, or terms acceptance without approval",
+      "No candidate may rely on owner-dependent fulfillment at target scale",
+      "No debt, leverage, production penetration testing, unauthorized access, regulated/personal customer data, or uncapped liability",
+      "No claim that a synthetic artifact, bounty listing, prospect list, or first payment validates a wealth strategy"
+    ],
+    "permissions": [
+      "Public-source research",
+      "Local synthetic prototypes",
+      "Internal economic modeling and red-team review"
+    ],
+    "non_goals": [
+      "Treating a synthetic demo as demand validation",
+      "Optimizing for a $2 million headline exit without owner-independent profit",
+      "Weakening a gate to keep a familiar candidate alive",
+      "Treating bounty/hourly income as the transferable wealth asset",
+      "Building generic evaluation software before repeated paid buyer evidence"
+    ]
+  },
+  "coverage": [
+    {
+      "id": "SRC-001",
+      "title": "Live Asymmetric Wealth OS v0.6.0",
+      "location": "work/asymmetric_wealth_os.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Current live provenance SHA-256 3d8dee02d0fa4ca2a3eb978efcf1877c12953607d7296810cb00f52b86a5f1dd. v0.6 preserves all STOP decisions and defines EXP-001 as a pre-candidate qualitative problem-discovery packet that cannot satisfy the stricter exploratory outreach gate. Nothing sent."
+    },
+    {
+      "id": "SRC-002",
+      "title": "Intuit candidate evidence pack",
+      "location": "work/intuit_candidate_evidence.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 97219b9eee42ed5b85210a33d4c2b90d26070364e5dad3f55ac1087e07676dda; original pack recomputed against OS v0.3."
+    },
+    {
+      "id": "SRC-003",
+      "title": "Intuit exploratory prospect list and initial QA",
+      "location": "work/intuit_exploratory_prospects.csv; work/intuit_exploratory_prospects_qa.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Structural role matching only; later row-level channel audit is controlling."
+    },
+    {
+      "id": "SRC-004",
+      "title": "Retired Intuit exploratory batch, suppression ledger, and protocol",
+      "location": "work/intuit_exploratory_batch.csv; work/intuit_suppression_ledger.csv; work/intuit_exploratory_outreach_protocol.md",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Nothing sent. Protocol SHA-256 44bdc87035c98e59edc052344094aded64b00508b769977af2dfc402a153b092; status RETIRED / NO-GO."
+    },
+    {
+      "id": "SRC-005",
+      "title": "Hardened Intuit synthetic read-only demo and effort record",
+      "location": "work/intuit_readonly_demo/; work/demo_effort_record.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Eight tests pass; clean demonstration 0.041 wall seconds and $0. Historical agent development time unavailable; EO4 passes but G6 is not independently established."
+    },
+    {
+      "id": "SRC-006",
+      "title": "Final Intuit exploratory gate reassessment",
+      "location": "work/exploratory_gate_reassessment.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 1dbf662a02598ad717f55da760a96e39f5f5228fcad66ccec63f4a0d440a1ae0. C16 stopped on distribution and scale; jq-valid historical v0.3 freeze includes final channel evidence and retired protocol hash."
+    },
+    {
+      "id": "SRC-007",
+      "title": "Final Intuit row-level contact-channel audit and QA",
+      "location": "work/intuit_contact_channel_audit.csv; work/intuit_contact_channel_audit_qa.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "All 50 accounts screened; only 9 eligible under the conservative rule. CSV SHA-256 cdbc564f446862a62ed0414ac8256e536009872cc9a215d9a3e14594c721a212; QA SHA-256 4cfd5eabf2c51323954505e8f4364a9248aafb97dce8990de12fdbd3e1fc27c2."
+    },
+    {
+      "id": "SRC-008",
+      "title": "Intuit recipient-resolution freeze",
+      "location": "work/intuit_recipient_resolution.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 2209929d7c6e084e92728d57c78d58e591bc4dc77944572319e19ad09fe95519; NO_GO and no recipient/contact action."
+    },
+    {
+      "id": "SRC-009",
+      "title": "Candidate register and current stopped statuses",
+      "location": "work/candidate_register.csv",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 7c32c97b868354a0d0ea9388de75e6c945d8e713547e5232f1ba9c46947cb53e; C16 is STOPPED_DISTRIBUTION_AND_SCALE and C26 is STOPPED_CURRENT_CHANNEL_SCREEN."
+    },
+    {
+      "id": "SRC-010",
+      "title": "Fresh remaining-candidate paper screen",
+      "location": "work/next_candidate_screen.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 e7342a8fd06fab4c6f3018dcdf0bca1cd56f955dc708eb6a4ced170d1ff6f4f5 at current freeze. Nineteen eligible register entries screened; recommendation NONE. This is a historical evaluation under frozen OS v0.3 and was not rewritten after v0.4 became live."
+    },
+    {
+      "id": "SRC-011",
+      "title": "Current official platform and vendor capability sources",
+      "location": "Source registry embedded in work/next_candidate_screen.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Official platform documentation is prioritized; vendor and marketplace pages are capability and price-discovery evidence only, not demand or retention evidence."
+    },
+    {
+      "id": "SRC-012",
+      "title": "HubSpot implementation-channel strict screen and QA",
+      "location": "work/channel_partner_prospects.csv; work/channel_partner_prospects_qa.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Thirty official directory records screened; 5 strict eligible, 25 excluded, zero dedicated partnership channels. CSV SHA-256 06a7b451c606f73821a94d6c2a041740817748ca1d4c1568e2673912242baf5e; QA SHA-256 001f2100ef543c436d5ebcb1c9018ef1791f6bdb46ef8ccbcdf4d36df818f7d5."
+    },
+    {
+      "id": "SRC-013",
+      "title": "Atlassian existing-app partnership screen",
+      "location": "work/atlassian_app_partnership_screen.json; work/atlassian_app_partnership_screen.csv",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Twenty preliminary public listings screened; zero strictly qualified outreach or deal-feasibility targets. JSON SHA-256 e64fb27ca348df4569384232f826558112946d4b5de3b874c5a77309a8e90bcd; CSV SHA-256 462a431cbf2d35972680699b7b7cda6e07b2086b5889d28b72296bcdab575ef3."
+    },
+    {
+      "id": "SRC-014",
+      "title": "Independent distribution-first mechanism red-team",
+      "location": "work/distribution_first_mechanism_redteam.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 be204696ff282c98a691bd2209acd84657d6aacc7630bf737ef9fdab8569c19e. Separates founder-owned channel software from existing-app earn-ins and independently reproduces ownership-adjusted thresholds."
+    },
+    {
+      "id": "SRC-015",
+      "title": "Corrected asymmetric-wealth model and ownership thresholds",
+      "location": "work/asymmetric_wealth_model.py; work/wealth_model_results.json; work/ownership_adjusted_wealth_thresholds.csv",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "The model now separates founder-owned channel software from existing-app earn-ins and labels the numerical ranking not decision-grade. Model SHA-256 7731cebcef072781444c278b0a8102a931ff3e6b002795a9133afcab1165dfd9."
+    },
+    {
+      "id": "SRC-016",
+      "title": "Fresh public buyer-demand and incumbent screen",
+      "location": "work/public_demand_signal_screen.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "SHA-256 c68c724f0884bc0b8666ecc1877085cf5fbd1e2826211d9859d04b5d0877f287. Four current mechanisms screened; none advanced. This is a bounded discovery screen, not a market census."
+    },
+    {
+      "id": "SRC-017",
+      "title": "Multi-client operator problem-discovery approval packet",
+      "location": "work/operator_problem_discovery_batch.csv; work/operator_problem_discovery_protocol.md; work/operator_problem_discovery_experiment.json; work/operator_problem_discovery_recipient_resolution.json",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Fourteen rows reviewed; 12 approval candidates, 10 organization/role emails, two general forms, one phone-required exclusion, and one stale-policy exclusion. Nothing sent. Batch SHA-256 670358e33204abb8e01b3e6a82825e62fc0741974dd0ea1f3d80269481ced08a."
+    },
+    {
+      "id": "SRC-018",
+      "title": "Conversation continuation and user-corrected objective",
+      "location": "upload/Pasted markdown(10).md; current conversation",
+      "source_type": "primary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "The user explicitly rejected the fixed $2 million/36-month framing, raised the cap to about $500 and 25 hours/week, required autonomous multi-perspective execution, and retained approval over external sends/actions."
+    },
+    {
+      "id": "SRC-019",
+      "title": "NIST AI Agent Standards Initiative",
+      "location": "https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative",
+      "source_type": "primary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Current 2026 primary evidence that agent security, identity, reliability, evaluations, and trusted adoption are active standardization and measurement problems; not willingness-to-pay evidence for this offer."
+    },
+    {
+      "id": "SRC-020",
+      "title": "OpenAI Safety Bug Bounty program",
+      "location": "https://openai.com/index/safety-bug-bounty/",
+      "source_type": "primary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Current program explicitly scopes agentic third-party prompt injection/data exfiltration and requires at least 50% reproducibility; validates a public proof channel, not a recurring-software market."
+    },
+    {
+      "id": "SRC-021",
+      "title": "Google Chrome VRP AI categories and rewards",
+      "location": "https://bughunters.google.com/about/rules/chrome-friends/chrome-vulnerability-reward-program-rules",
+      "source_type": "primary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Current official rules scope reproducible rogue actions and sensitive-data exfiltration, with discretionary rewards up to $20,000/$10,000 and explicit 50%+ reliability language."
+    },
+    {
+      "id": "SRC-022",
+      "title": "Acquire.com January 2026 confirmed SaaS sale multiples",
+      "location": "https://blog.acquire.com/acquire-com-biannual-acquisition-multiples-report-jan-2026/",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Marketplace report says confirmed 2024 and 2025 SaaS sales had a 3.9x median profit multiple. This is an outcome benchmark, not a forecast for a new company or proof of buyer independence."
+    },
+    {
+      "id": "SRC-023",
+      "title": "U.S. Census 2023 Nonemployer Statistics receipts distribution",
+      "location": "https://data.census.gov/table/NONEMP2023.NS2300NONEMP",
+      "source_type": "primary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "30,427,808 nonemployer establishments; 104,643 at $1m-$2.499m receipts, 11,512 at $2.5m-$4.999m, and 905 at $5m+. Receipts are pre-expense, cross-sectional, and not founder wealth; used only against survivor-bias claims."
+    },
+    {
+      "id": "SRC-024",
+      "title": "AI-security versus Atlassian head-to-head and bounded experiment",
+      "location": "work/ai_security_vs_atlassian_head_to_head.json; work/ai_security_bounty_experiment.json; work/ai_security_lab/",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Independent reviewers selected AI-agent reliability/security for the next bounded experiment and rejected the current Atlassian earn-in route after zero strictly qualified targets in 20 listings."
+    },
+    {
+      "id": "SRC-025",
+      "title": "Hardened recorded-trace contract checker",
+      "location": "work/ai_eval_release_gate/",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Dependency-free synthetic proof with strict JSON, policy-authoritative tool classes, exact approval/action binding, source-read binding, dataset-specific version binding, deterministic reports, and explicit claim limits. Current suite passes 48/48 after a commercial hostile review caught and fixed missing baseline/candidate version enforcement. Evaluator SHA-256 4c3a0cb2ef70064aa79356b30a16ad9d733da600104539f69d182065a05a0a14; test-suite SHA-256 77a76ed640ba6d4ab53e9dfc0f7362c5a438dd05350822a675cfbfa0a8c459df; source-excluding sample archive SHA-256 32013411d032a18a8e95171882fdb2b144f9e1f8319094adc6d17d1e6d271eb3."
+    },
+    {
+      "id": "SRC-026",
+      "title": "Paid pilot packet, prospect QA, and foreign-packet preflights",
+      "location": "work/ai_agent_release_pilot/",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Offer/terms/preflight/delivery controls are internal only. First two foreign packets were rejected before acceptance rather than weakening the contract. Initial 30 prospects produced only seven conditional U.S. routes; zero messages sent."
+    },
+    {
+      "id": "SRC-027",
+      "title": "Clean-sheet blind foreign-schema rehearsal v4",
+      "location": "work/ai_agent_release_pilot/foreign_schema_dry_run/fulfillment_v4/",
+      "source_type": "model",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Contract and baseline were frozen before candidate access and the oracle remained sealed until after the advisory verdict. Baseline passed 25/25; candidate was structurally accepted and advisory-blocked at 18/25; the aggregate audit produced 11 findings mapping to all seven seeded root causes, with 7 TP, 0 FP, 0 FN, precision/recall/F1 1.0. Independent clean reproduction passed. This is one wholly synthetic rehearsal, not production accuracy or buyer evidence. Oracle-comparison SHA-256 d2caca13c472fa20b1d006cc2d3ecbe198315fad838ef41cb7502a63258262c0."
+    },
+    {
+      "id": "SRC-028",
+      "title": "Frozen 30-company U.S. pilot cohort",
+      "location": "work/ai_agent_release_pilot/final_30_prospect_cohort.json; work/ai_agent_release_pilot/prospect_master_qa.json; work/ai_agent_release_pilot/replacement_us_prospects.json; work/ai_agent_release_pilot/final_three_us_prospects.json",
+      "source_type": "secondary",
+      "read_status": "complete",
+      "duplicate_of": null,
+      "notes": "Exactly 30 non-duplicate public-source prospects passed the frozen action, decision-maker, U.S.-nexus, compatible route-purpose, non-evaluation-vendor, and risk-label gates. The final ConverseNow row was independently re-opened against four official pages. Route compatibility is not consent or demand; no message, form, booking, or other contact action occurred."
+    }
+  ],
+  "strategies": [
+    {
+      "id": "STR-001",
+      "name": "Intuit unapplied-cash exploratory research",
+      "mechanism": "Use a no-data research batch to test recurrence and incumbent gaps before any paid or data-bearing offer.",
+      "status": "rejected",
+      "assumptions": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003"
+      ],
+      "current_gate": "EO3 and G5",
+      "gate_status": "failed",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-004",
+        "SRC-005",
+        "SRC-006",
+        "SRC-007",
+        "SRC-008"
+      ],
+      "rejection_reason": "Only 9 of 50 accounts cleared the conservative channel screen, leaving the exploratory distribution gate 41 short; the $149 scale case also needs 404 accounts and exceeds the founder-support cap. Protocol retired and nothing sent."
+    },
+    {
+      "id": "STR-002",
+      "name": "Remaining registered candidate tournament",
+      "mechanism": "Paper-screen all non-stopped candidates before any new build, using access, exact incumbent gap, target-scale ARPA/support/distribution, bounded demo, and data/legal burden.",
+      "status": "rejected",
+      "assumptions": [
+        "CLM-004"
+      ],
+      "current_gate": "pre-evidence paper screen",
+      "gate_status": "failed",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-009",
+        "SRC-010",
+        "SRC-011"
+      ],
+      "rejection_reason": "No current registered candidate clears both a specific incumbent gap and a credible owner-independent target-scale economic path. C05, C21, and C18 are only conditional reframe directions."
+    },
+    {
+      "id": "STR-003",
+      "name": "Distribution-first ownership partnership search",
+      "mechanism": "Screen existing platform-app owners and implementation channels for verified distribution, transaction/retention evidence, prepaid design-customer access, and a founder-owned IP structure before selecting a product pain.",
+      "status": "rejected",
+      "assumptions": [
+        "CLM-005"
+      ],
+      "current_gate": "G0 rights-and-access / channel reachability",
+      "gate_status": "failed",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-010",
+        "SRC-012",
+        "SRC-013",
+        "SRC-014"
+      ],
+      "rejection_reason": "The current channel branch produced 5 of 30 strict HubSpot prospects and zero dedicated partnership channels; the existing-app branch produced zero strictly qualified targets in 20 public listings. The architecture remains a low-confidence search order, but this concrete search is stopped and no outreach batch is justified."
+    },
+    {
+      "id": "STR-004",
+      "name": "Direct buyer problem discovery into founder-owned software",
+      "mechanism": "Use direct buyer-originated problem evidence and a bounded paid diagnostic as the control arm; standardize only a repeated outcome into founder-owned recurring software, with workflow data receiving zero value until rights and recurrence are observed.",
+      "status": "paused",
+      "assumptions": [
+        "CLM-009",
+        "CLM-012"
+      ],
+      "current_gate": "superseded by narrower paid agent-release experiment",
+      "gate_status": "not tested",
+      "evidence_ids": [
+        "SRC-010",
+        "SRC-014",
+        "SRC-015",
+        "SRC-017"
+      ],
+      "rejection_reason": "The generic 12-organization problem-discovery batch was never sent and is superseded by a concrete, higher-information paid diagnostic with an owned proof and consequential-action prospect universe."
+    },
+    {
+      "id": "STR-005",
+      "name": "AI-agent recorded-trace reliability paid discovery into founder-owned software",
+      "mechanism": "Sell a tightly bounded, prepaid structural evaluation of one consequential tool-using agent workflow; preserve the evaluator, schemas, generic methods, and non-confidential patterns as Background IP; observe repeated paid failure modes; productize only the repeated low-touch bottleneck into majority-owned recurring software.",
+      "status": "active",
+      "assumptions": [
+        "CLM-014",
+        "CLM-016",
+        "CLM-019",
+        "CLM-020",
+        "CLM-021"
+      ],
+      "current_gate": "user/legal sender clearance for first $600 paid-signal experiment",
+      "gate_status": "in progress",
+      "evidence_ids": [
+        "SRC-019",
+        "SRC-020",
+        "SRC-021",
+        "SRC-024",
+        "SRC-025",
+        "SRC-026",
+        "SRC-027",
+        "SRC-028"
+      ],
+      "rejection_reason": null
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-001",
+      "text": "The frozen 50-account Intuit universe contains at least 50 conservative, organization-level asynchronous research channels with complete policy screens.",
+      "claim_type": "legal",
+      "origin": "model",
+      "source_ids": [
+        "SRC-007",
+        "SRC-008"
+      ],
+      "status": "falsified",
+      "confidence": 0.99,
+      "independent_check": "The complete row-level audit clears 9 of 50, with 23 unknown-policy, 15 intake-only, one prohibited, one instructed exclusion, and one with no allowed async channel.",
+      "decision_impact": "EO3 fails and permanently blocks the C16 send-approval request under the frozen universe and rule.",
+      "unresolved_assumptions": []
+    },
+    {
+      "id": "CLM-002",
+      "text": "The existing Intuit synthetic read-only outcome can now be demonstrated within the frozen EO4 ceiling of 10 founder hours and $50.",
+      "claim_type": "quantitative",
+      "origin": "model",
+      "source_ids": [
+        "SRC-005",
+        "SRC-006"
+      ],
+      "status": "independently-reproduced",
+      "confidence": 0.99,
+      "independent_check": "Eight tests pass; a clean demonstration takes 0.041 wall seconds, costs $0, requires no user action, credentials, API, network, or private data, and preserves review-before-action.",
+      "decision_impact": "EO4 passes. This does not rescue EO3, authorize outreach, validate demand, or establish the stronger G6 timed-build gate.",
+      "unresolved_assumptions": [
+        "Historical agent development time was not measured; this is disclosed and remains relevant to G6, not frozen EO4."
+      ]
+    },
+    {
+      "id": "CLM-003",
+      "text": "The $149 target-scale Intuit case has a fully costed owner-independent path to the OS wealth benchmark.",
+      "claim_type": "quantitative",
+      "origin": "model",
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-006"
+      ],
+      "status": "falsified",
+      "confidence": 0.99,
+      "independent_check": "$60,190 MRR requires 404 accounts; at the candidate's 10 support minutes per account per month, support alone is 67.33 hours versus the eight-hour founder delivery/support cap, before onboarding and incidents.",
+      "decision_impact": "Preserves STOP on the current $149 wealth-scale design independently of exploratory outreach.",
+      "unresolved_assumptions": []
+    },
+    {
+      "id": "CLM-004",
+      "text": "At least one remaining registered candidate clears a paper screen for permitted access, exact incumbent gap, target-scale economics, sublinear support, bounded demo, and manageable data/legal burden.",
+      "claim_type": "causal",
+      "origin": "model",
+      "source_ids": [
+        "SRC-009",
+        "SRC-010",
+        "SRC-011"
+      ],
+      "status": "falsified",
+      "confidence": 0.85,
+      "independent_check": "All 19 eligible entries have a current exact/near-exact substitute, access blocker, or missing target-scale ARPA/support case. C05, C21, and C18 remain only narrowed research directions and are not selected.",
+      "decision_impact": "Recommendation is NONE; generate a new candidate slate rather than building or contacting for a familiar loser.",
+      "unresolved_assumptions": [
+        "The screen is a current public-evidence decision, not proof that no undiscovered niche exists."
+      ]
+    },
+    {
+      "id": "CLM-005",
+      "text": "At least one existing app owner or implementation channel can supply verified distribution and prepaid design-customer access under terms that preserve founder-owned product IP and target-scale sublinear economics.",
+      "claim_type": "causal",
+      "origin": "model",
+      "source_ids": [
+        "SRC-001"
+      ],
+      "status": "unverified",
+      "confidence": 0.15,
+      "independent_check": "No owner, channel, transaction evidence, retention cohort, commercial term, or prepaid design customer has yet been verified. The live OS correctly treats this as a search gate, not a selected opportunity.",
+      "decision_impact": "STR-003 may continue with public research only; no product, outreach batch, partnership, or external commitment is approved.",
+      "unresolved_assumptions": [
+        "A willing channel owner exists",
+        "Commercial terms can preserve sufficient IP ownership and margin",
+        "Channel demand maps to a standard recurring pain rather than services"
+      ]
+    },
+    {
+      "id": "CLM-006",
+      "text": "The screened HubSpot implementation-partner universe contains at least 15 strict, organization-level partnership prospects suitable for an approval-ready exploratory batch.",
+      "claim_type": "market",
+      "origin": "model",
+      "source_ids": [
+        "SRC-012"
+      ],
+      "status": "falsified",
+      "confidence": 0.99,
+      "independent_check": "The complete 30-row screen produced 5 strict general-contact prospects, 25 exclusions, and zero dedicated partnership-specific channels.",
+      "decision_impact": "The current founder-owned channel outreach batch is stopped; no approval request is justified.",
+      "unresolved_assumptions": []
+    },
+    {
+      "id": "CLM-007",
+      "text": "A public listing screen can identify at least one Atlassian app owner whose seller intent, title, economics, code rights, migration scope, and outreach route are sufficiently verified for an earn-in approach.",
+      "claim_type": "market",
+      "origin": "model",
+      "source_ids": [
+        "SRC-013",
+        "SRC-014"
+      ],
+      "status": "falsified",
+      "confidence": 0.95,
+      "independent_check": "Twenty public listings produced zero strictly qualified outreach or deal-feasibility targets; support tabs do not prove business-development authority or seller intent.",
+      "decision_impact": "The existing-app earn-in branch remains stopped before outreach or migration work.",
+      "unresolved_assumptions": [
+        "A nonpublic owner may still be willing, but public evidence does not identify one."
+      ]
+    },
+    {
+      "id": "CLM-008",
+      "text": "The current judgment-prior model establishes distribution-first software as more likely than service-to-software to reach $2 million of founder equity within 36 months.",
+      "claim_type": "forecast",
+      "origin": "model",
+      "source_ids": [
+        "SRC-014",
+        "SRC-015"
+      ],
+      "status": "falsified",
+      "confidence": 0.99,
+      "independent_check": "The midpoint gap is 0.065625 percentage points, the ranges overlap almost completely, and a 0.735-percentage-point change in one assumed first-payment midpoint reverses the rank.",
+      "decision_impact": "Numerical ranking is removed as a selection basis; the architecture is judged only as an information-acquisition order.",
+      "unresolved_assumptions": []
+    },
+    {
+      "id": "CLM-009",
+      "text": "Direct buyer-originated problem discovery can identify a repeated, target-compatible outcome that survives rights, incumbent, support, and paid-commitment gates under the current constraints.",
+      "claim_type": "causal",
+      "origin": "model",
+      "source_ids": [
+        "SRC-010",
+        "SRC-014",
+        "SRC-015"
+      ],
+      "status": "unverified",
+      "confidence": 0.15,
+      "independent_check": "This remains the unresolved control arm after current channel and earn-in screens failed; no target population, exact problem, recipient universe, payment, or delivered outcome is yet observed.",
+      "decision_impact": "Only public research and experiment design may continue. No external contact is approved or currently approval-ready.",
+      "unresolved_assumptions": [
+        "A lawful reachable buyer universe exists",
+        "A repeated outcome survives incumbent review",
+        "Buyers will fund a bounded diagnostic",
+        "The repeated core can become low-touch software"
+      ]
+    },
+    {
+      "id": "CLM-010",
+      "text": "A fresh bounded public-demand sweep identifies at least one build- or outreach-ready AI workflow candidate under the current constraints.",
+      "claim_type": "market",
+      "origin": "model",
+      "source_ids": [
+        "SRC-016"
+      ],
+      "status": "falsified",
+      "confidence": 0.9,
+      "independent_check": "Cross-system reconciliation has multiple current hiring signals but at least twelve near-exact products plus accounting/data burdens; the QuickBooks, Shopify, and Jira candidates fail exact-repetition or incumbent gates.",
+      "decision_impact": "No new product, prototype, or recipient batch is advanced from the public sweep.",
+      "unresolved_assumptions": [
+        "The bounded search cannot establish that no undiscovered opportunity exists."
+      ]
+    },
+    {
+      "id": "CLM-011",
+      "text": "The combined audited QuickBooks and HubSpot operator universes contain 12 public organization-level routes suitable for a one-time, noncommercial problem-discovery approval packet without personal addresses, phone collection, links, tracking, or follow-up automation.",
+      "claim_type": "factual",
+      "origin": "model",
+      "source_ids": [
+        "SRC-007",
+        "SRC-012",
+        "SRC-017"
+      ],
+      "status": "independently-reproduced",
+      "confidence": 0.95,
+      "independent_check": "CSV parsing confirms 14 unique reviewed rows, 12 approval candidates, 10 email routes and two general forms; one phone-required row and one stale-policy row are excluded. Syntax is valid, but deliverability and legal permission remain unverified.",
+      "decision_impact": "An exact approval packet can be presented, but sender identity and user authorization are still mandatory before any external action.",
+      "unresolved_assumptions": [
+        "A public route is not proof of internal recipient authority or legal permission.",
+        "Email-domain deliverability could not be tested in the sandbox.",
+        "Form fields and policies must be rechecked at send time."
+      ]
+    },
+    {
+      "id": "CLM-012",
+      "text": "A 12-organization problem-discovery batch will produce at least two same-ecosystem replies describing one exact monthly recurring exception and at least one economic signal within 14 calendar days.",
+      "claim_type": "forecast",
+      "origin": "model",
+      "source_ids": [
+        "SRC-017"
+      ],
+      "status": "unverified",
+      "confidence": 0.15,
+      "independent_check": "The probability is pre-registered and explicitly uncalibrated; no message has been sent and no external outcome exists.",
+      "decision_impact": "If approved and executed, the outcome can advance one exact problem to a 30-artifact screen or stop this generic organization-channel method.",
+      "unresolved_assumptions": [
+        "General organization inboxes route to the relevant operator.",
+        "The small availability sample can produce exact convergence.",
+        "Replies are not contaminated by a desire to sell the respondent's own services."
+      ]
+    },
+    {
+      "id": "CLM-013",
+      "text": "No public matched cohort currently supports a numerical probability that this founder, under these constraints, becomes a multimillionaire through any screened mechanism.",
+      "claim_type": "forecast",
+      "origin": "model",
+      "source_ids": [
+        "SRC-018",
+        "SRC-023"
+      ],
+      "status": "source-supported",
+      "confidence": 0.95,
+      "independent_check": "Three independent strategy reviewers found no matched denominator. Census cross-sectional receipts data cannot identify founder wealth, time-to-outcome, or this founder's conditional probability.",
+      "decision_impact": "No strategy is described as guaranteed or assigned a fabricated precise wealth probability; selection uses constraint dominance and falsifiable paid gates.",
+      "unresolved_assumptions": [
+        "Private matched-cohort data may exist but was not identified."
+      ]
+    },
+    {
+      "id": "CLM-014",
+      "text": "AI-agent reliability, identity, authorization, and security are current 2026 adoption and measurement problems.",
+      "claim_type": "market",
+      "origin": "external-source",
+      "source_ids": [
+        "SRC-019"
+      ],
+      "status": "source-supported",
+      "confidence": 0.95,
+      "independent_check": "NIST's current initiative explicitly centers secure autonomous action, identity/authorization, agent evaluations, measurement, and trusted adoption.",
+      "decision_impact": "The problem category survives the recency gate, but does not by itself establish demand for the exact offer.",
+      "unresolved_assumptions": [
+        "Small agent vendors may still prefer internal or incumbent tooling over a paid external check."
+      ]
+    },
+    {
+      "id": "CLM-015",
+      "text": "Public programs currently reward reproducible agentic rogue-action, prompt-injection, and sensitive-data-exfiltration findings.",
+      "claim_type": "factual",
+      "origin": "external-source",
+      "source_ids": [
+        "SRC-020",
+        "SRC-021"
+      ],
+      "status": "source-supported",
+      "confidence": 0.99,
+      "independent_check": "OpenAI explicitly requires at least 50% reproducibility for scoped agentic prompt-injection/exfiltration reports; Google defines reliable as 50%+ and publishes discretionary AI reward tiers.",
+      "decision_impact": "A lawful public capability/proof route exists, but bounty income is not treated as equity or recurring demand.",
+      "unresolved_assumptions": [
+        "No actionable finding has been produced or submitted."
+      ]
+    },
+    {
+      "id": "CLM-016",
+      "text": "The exact $600 recorded-trace pilot has zero externally observed willingness-to-pay evidence.",
+      "claim_type": "market",
+      "origin": "observed-outcome",
+      "source_ids": [
+        "SRC-026"
+      ],
+      "status": "externally-observed",
+      "confidence": 1.0,
+      "independent_check": "No offer was sent, no prospect replied, no payment or escrow cleared, and no customer packet was accepted.",
+      "decision_impact": "The strategy is selected for a bounded experiment, not validated as a business or wealth strategy.",
+      "unresolved_assumptions": []
+    },
+    {
+      "id": "CLM-017",
+      "text": "The current recorded-trace checker can fail closed on its declared structural contract under the tested synthetic threat model.",
+      "claim_type": "factual",
+      "origin": "model",
+      "source_ids": [
+        "SRC-025"
+      ],
+      "status": "independently-reproduced",
+      "confidence": 0.98,
+      "independent_check": "Independent hostile probes and malformed-shape fuzzing found and drove fixes for provenance, approval, parser, identity, path-alias, exact-value, timestamp, and required-effect false passes. The final 48-test freeze and clean-sheet v4 reproduction passed.",
+      "decision_impact": "The artifact can serve as a capability sample only within its explicit non-semantic/non-authentication limits.",
+      "unresolved_assumptions": [
+        "Passing synthetic tests does not establish production accuracy."
+      ]
+    },
+    {
+      "id": "CLM-018",
+      "text": "A single payment, bounty, or paid evaluation would not validate repeatable owner-independent software economics.",
+      "claim_type": "causal",
+      "origin": "model",
+      "source_ids": [
+        "SRC-022",
+        "SRC-026"
+      ],
+      "status": "source-supported",
+      "confidence": 0.95,
+      "independent_check": "A completed-sale profit multiple applies to durable transferable profit, while one transaction reveals only one counterparty's behavior and says nothing about retention, replacement labor, or buyer concentration.",
+      "decision_impact": "Productization and wealth claims remain blocked until repeated cross-buyer paid recurrence, repeat purchase, low-touch delivery, margin, retention, and IP transferability are observed.",
+      "unresolved_assumptions": []
+    },
+    {
+      "id": "CLM-019",
+      "text": "Repeated paid agent-release failure modes can be converted into founder-owned, low-marginal-cost recurring software without losing the buyer relationship or Background IP.",
+      "claim_type": "causal",
+      "origin": "model",
+      "source_ids": [
+        "SRC-024",
+        "SRC-025",
+        "SRC-026"
+      ],
+      "status": "unverified",
+      "confidence": 0.2,
+      "independent_check": "This is the right-tail mechanism, not an observed fact. No two unrelated buyers have paid for the same repeated bottleneck and no buyer has repeated.",
+      "decision_impact": "No generic SaaS build is authorized. The assumption is tested only through paid delivery-time decomposition and repeat orders.",
+      "unresolved_assumptions": [
+        "The same bottleneck recurs across unrelated buyers.",
+        "At least 60% of delivery minutes become reusable automation.",
+        "A buyer repeats or funds a recurring order.",
+        "Background IP remains clean and transferable."
+      ]
+    },
+    {
+      "id": "CLM-020",
+      "text": "The controlled recorded-trace fulfillment workflow can accept and normalize one structurally valid foreign synthetic packet, issue a pre-oracle advisory BLOCK, and identify every seeded contract defect in that packet without false positives.",
+      "claim_type": "factual",
+      "origin": "model",
+      "source_ids": [
+        "SRC-025",
+        "SRC-027"
+      ],
+      "status": "independently-reproduced",
+      "confidence": 0.97,
+      "independent_check": "The v4 contract/golden were frozen before candidate access; baseline passed 25/25; candidate was structurally accepted and advisory-blocked; the later oracle comparison was 7 TP, 0 FP, 0 FN; the frozen pre-oracle run reproduced byte-identically.",
+      "decision_impact": "The internal technical rehearsal prerequisite is satisfied for one controlled paid-market test, while production accuracy and customer value remain unproven.",
+      "unresolved_assumptions": [
+        "A real buyer packet may expose untested schemas or failure modes.",
+        "One synthetic packet does not estimate field precision or recall."
+      ]
+    },
+    {
+      "id": "CLM-021",
+      "text": "Exactly 30 non-duplicate U.S.-nexus companies currently have official evidence of consequential agent actions, a named decision-maker, and a public general or founder business route compatible with the proposed outreach purpose.",
+      "claim_type": "factual",
+      "origin": "external-source",
+      "source_ids": [
+        "SRC-028"
+      ],
+      "status": "source-supported",
+      "confidence": 0.95,
+      "independent_check": "Seven initial rows, twenty non-overlapping replacements, and three final rows passed the same strict gates; the final ConverseNow record was independently re-opened against official product, terms, company-contact, and leadership pages.",
+      "decision_impact": "The EXP-002 denominator can be frozen at 30, subject to same-day route/suppression review and explicit user send approval.",
+      "unresolved_assumptions": [
+        "Public route compatibility does not establish consent, deliverability, buying authority, interest, or willingness to pay."
+      ]
+    }
+  ],
+  "predictions": [
+    {
+      "id": "PRD-001",
+      "text": "At least one substantive reply arrives within 14 calendar days of the first confirmed delivery in EXP-001.",
+      "probability": 0.45,
+      "recorded_at": "2026-08-10T02:17:11+00:00",
+      "resolve_by": null,
+      "outcome": null,
+      "resolved_at": null,
+      "brier_score": null,
+      "evidence_ids": [
+        "SRC-017"
+      ]
+    },
+    {
+      "id": "PRD-002",
+      "text": "At least two same-ecosystem replies identify one exact repeated monthly outcome and at least one economic signal within 14 calendar days of the first confirmed delivery in EXP-001.",
+      "probability": 0.15,
+      "recorded_at": "2026-08-10T02:17:11+00:00",
+      "resolve_by": null,
+      "outcome": null,
+      "resolved_at": null,
+      "brier_score": null,
+      "evidence_ids": [
+        "SRC-017"
+      ]
+    },
+    {
+      "id": "PRD-003",
+      "text": "At least one of the frozen 30 qualified U.S. organizations clears $600 prepaid or funded escrow for the fixed recorded-trace pilot within 21 calendar days and 12 founder-active acquisition hours after the first approved send.",
+      "probability": 0.1,
+      "recorded_at": "2026-08-12T04:44:00+00:00",
+      "resolve_by": null,
+      "outcome": null,
+      "resolved_at": null,
+      "brier_score": null,
+      "evidence_ids": [
+        "SRC-026"
+      ],
+      "calibration_note": "Judgmental and explicitly uncalibrated because no matched cohort exists; recorded to prevent retrospective confidence editing."
+    }
+  ],
+  "experiments": [
+    {
+      "id": "EXP-001",
+      "strategy_id": "STR-004",
+      "hypothesis": "At least two independent multi-client operators within one ecosystem identify the same monthly recurring exception and at least one economic signal.",
+      "alternative": "No exact repeated outcome with an economic signal appears, so no product advances from these strata.",
+      "design": "One plain-text, noncommercial research question sent individually to 12 audited organization-level routes; no links, tracking, call request, private data request, or follow-up to nonresponders.",
+      "target_population": "Eight QuickBooks and four HubSpot multi-client operators from two previously audited public-source universes.",
+      "prediction_id": "PRD-002",
+      "time_ceiling_hours": 3,
+      "cash_ceiling": 0,
+      "interpretation_rules": [
+        "Zero substantive replies stops generic organization-channel discovery for these strata but does not prove absence of pain.",
+        "One substantive reply or divergent replies advances no product.",
+        "Two independent same-ecosystem exact-outcome replies plus one economic signal advance only that outcome to a 30-artifact evidence and incumbent screen.",
+        "Any paid-diagnostic request requires new approval before scope, price, data, or terms discussion."
+      ],
+      "approval_id": "APR-001",
+      "status": "aborted",
+      "result": "Superseded before sending by EXP-002 after the user corrected the objective and a more specific paid diagnostic survived independent comparison.",
+      "evidence_ids": [
+        "SRC-017"
+      ]
+    },
+    {
+      "id": "EXP-002",
+      "strategy_id": "STR-005",
+      "hypothesis": "At least one qualified U.S. operator of a consequential tool-using AI agent will prepay or fund escrow for a fixed $600 recorded-trace structural pilot that fits eight fulfillment hours.",
+      "alternative": "Zero frozen-cohort payments, insufficient lawful-looking delivery, or an over-eight-hour accepted rehearsal stops this direct offer without weakening the thresholds.",
+      "design": "After an accepted independent foreign-schema rehearsal and a frozen 30-row U.S. route cohort, send one individualized plain-text commercial message and at most one follow-up per organization. No links, tracking, first-message attachment, production access, penetration testing, personal/regulated data, or semantic/compliance claim.",
+      "target_population": "Thirty U.S.-jurisdiction companies publicly operating consequential tool-using agents, with official action evidence, named decision-maker, and a general/founder business route whose stated purpose is compatible with a proposal.",
+      "prediction_id": "PRD-003",
+      "time_ceiling_hours": 12,
+      "cash_ceiling": 0,
+      "interpretation_rules": [
+        "The denominator freezes at 30 before send; bounces remain in it and confirmed delivery is reported separately.",
+        "One cleared $600 payment is a first paid signal only, not market or wealth validation.",
+        "Zero payments within 21 days and 12 acquisition hours stops the direct offer; fewer than 24 confirmed deliveries also marks the channel inconclusive/failed without replacement rows.",
+        "Productization remains prohibited until two unrelated buyers pay for materially the same check, logged reusable-core work reaches 60%, and one buyer purchases again or funds a binding recurring order.",
+        "Every accepted fulfillment must fit eight founder-active hours and the executed data/IP/liability boundary."
+      ],
+      "approval_id": "APR-002",
+      "status": "designed",
+      "result": "Internal technical rehearsal and exact 30-company cohort prerequisites passed. No market action, reply, payment, or delivery has occurred.",
+      "evidence_ids": [
+        "SRC-024",
+        "SRC-025",
+        "SRC-026",
+        "SRC-027",
+        "SRC-028"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "timestamp": "2026-08-10T00:45:00+00:00",
+      "decision": "NO_GO on requesting user approval to send the Intuit exploratory batch.",
+      "reason": "EO3 fails at 9 of 50 conservatively cleared channels; EO5 remains incomplete and is moot after retirement. EO1, EO2, EO4, and EO6 pass only their limited exploratory screens.",
+      "evidence_ids": [
+        "SRC-006",
+        "SRC-007",
+        "SRC-008"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-002",
+      "timestamp": "2026-08-10T00:23:46+00:00",
+      "decision": "Preserve STOP on the $149 target-scale Intuit wealth case.",
+      "reason": "The 404-account target fails the founder-time cap and lacks a fully costed owner-replacement and acquisition model.",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-006"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-003",
+      "timestamp": "2026-08-10T00:45:00+00:00",
+      "decision": "Stop C16 on distribution and scale; retire its outreach protocol with nothing sent.",
+      "reason": "The frozen universe cannot meet EO3 without weakening the qualification rule, and exploratory outreach cannot repair failed target-scale physics.",
+      "evidence_ids": [
+        "SRC-004",
+        "SRC-006",
+        "SRC-007",
+        "SRC-008",
+        "SRC-009"
+      ],
+      "supersedes": "DEC-001"
+    },
+    {
+      "id": "DEC-004",
+      "timestamp": "2026-08-10T00:46:00+00:00",
+      "decision": "Select NONE from the remaining registered candidates after the fresh paper screen.",
+      "reason": "No candidate clears both a defensible exact incumbent gap and target-compatible owner-independent economics. C05, C21, and C18 are ranked only as conditional reframings, not approved candidates.",
+      "evidence_ids": [
+        "SRC-009",
+        "SRC-010",
+        "SRC-011"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-005",
+      "timestamp": "2026-08-10T00:50:00+00:00",
+      "decision": "Adopt OS v0.4 as the live protocol while preserving the v0.3 candidate screen as a historical evaluation.",
+      "reason": "After C16/C25 STOP and NONE advanced, the next live gate searches for verified distribution and ownership alignment before selecting or building another product.",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-010"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-006",
+      "timestamp": "2026-08-10T01:41:31+00:00",
+      "decision": "Stop the current distribution-first implementation-channel and existing-app screens before outreach.",
+      "reason": "The HubSpot channel screen cleared 5 of 30 rather than the frozen 15 and found zero dedicated partnership channels; the Atlassian app screen found zero strictly qualified targets in 20 listings.",
+      "evidence_ids": [
+        "SRC-012",
+        "SRC-013"
+      ],
+      "supersedes": "DEC-005"
+    },
+    {
+      "id": "DEC-007",
+      "timestamp": "2026-08-10T01:41:31+00:00",
+      "decision": "Retain distribution-first only as a low-confidence search order and remove its numerical-prior winner claim.",
+      "reason": "Independent reproduction shows the top modeled difference is only 0.065625 percentage points, reverses under a sub-one-point change in an assumed stage, and improperly combined founder ownership with minority earn-ins.",
+      "evidence_ids": [
+        "SRC-014",
+        "SRC-015"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-008",
+      "timestamp": "2026-08-10T01:41:31+00:00",
+      "decision": "Do not request external-send approval from the current evidence set.",
+      "reason": "No current batch has both a sufficient recipient universe and a product/problem hypothesis that has survived the prerequisite evidence gates.",
+      "evidence_ids": [
+        "SRC-010",
+        "SRC-012",
+        "SRC-013",
+        "SRC-014"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-009",
+      "timestamp": "2026-08-10T01:47:35+00:00",
+      "decision": "Advance NONE from the fresh public-demand sweep.",
+      "reason": "The strongest costly-work signal is already crowded and outside the current accounting/data risk envelope; the remaining platform complaints do not meet the frozen repetition or incumbent-gap rules.",
+      "evidence_ids": [
+        "SRC-016"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-010",
+      "timestamp": "2026-08-10T01:48:36+00:00",
+      "decision": "Adopt Asymmetric Wealth OS v0.5 as the live protocol.",
+      "reason": "The live state must record the failed C26/C27 searches, separate ownership mechanisms, remove the numerical winner claim, and block send approval until a genuinely qualified experiment exists.",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-012",
+        "SRC-013",
+        "SRC-014",
+        "SRC-016"
+      ],
+      "supersedes": "DEC-005"
+    },
+    {
+      "id": "DEC-011",
+      "timestamp": "2026-08-10T02:17:11+00:00",
+      "decision": "Select EXP-001 as the smallest current external experiment and pause at its send-approval boundary.",
+      "reason": "It uses 12 already audited organization routes, costs $0, requests no call or private data, makes no product claim, and can either reveal one exact buyer-originated outcome for deeper screening or stop this generic channel method. Building a demo, reviving stopped product pitches, or approaching unverified partners would yield less decision-relevant evidence per constrained hour and dollar.",
+      "evidence_ids": [
+        "SRC-012",
+        "SRC-014",
+        "SRC-016",
+        "SRC-017"
+      ],
+      "supersedes": "DEC-008"
+    },
+    {
+      "id": "DEC-012",
+      "timestamp": "2026-08-10T02:18:39+00:00",
+      "decision": "Adopt Asymmetric Wealth OS v0.6 as the live protocol for EXP-001.",
+      "reason": "The new qualitative boundary prevents a 12-organization research batch from being mistaken for the 50-account exploratory gate, demand validation, or permission to build.",
+      "evidence_ids": [
+        "SRC-001",
+        "SRC-017"
+      ],
+      "supersedes": "DEC-010"
+    },
+    {
+      "id": "DEC-013",
+      "timestamp": "2026-08-12T04:44:00+00:00",
+      "decision": "Supersede the fixed $2 million/36-month framing with an open-ended objective of fastest credible multimillionaire-level liquid or transferable founder wealth under the current $500 and 25-hour constraints.",
+      "reason": "The user explicitly corrected the objective. A fixed paper-exit target had distorted selection toward unsupported valuation math rather than paid proof, owner independence, and transferable equity.",
+      "evidence_ids": [
+        "SRC-018",
+        "SRC-022",
+        "SRC-023"
+      ],
+      "supersedes": "DEC-012"
+    },
+    {
+      "id": "DEC-014",
+      "timestamp": "2026-08-12T04:44:00+00:00",
+      "decision": "Select STR-005 for one bounded paid-signal experiment and do not pursue the Atlassian operator-to-own route in parallel.",
+      "reason": "STR-005 has an owned working proof, current problem evidence, and a direct falsifiable payment gate. The Atlassian screen had zero qualified targets and no verified seller consent, receipts, code/IP rights, or bounded transfer economics.",
+      "evidence_ids": [
+        "SRC-019",
+        "SRC-020",
+        "SRC-021",
+        "SRC-024",
+        "SRC-025"
+      ],
+      "supersedes": "DEC-011"
+    },
+    {
+      "id": "DEC-015",
+      "timestamp": "2026-08-12T07:45:00+00:00",
+      "decision": "Reject foreign rehearsal packets v1 and v2 before payment or oracle access and require a complete buyer-declared v3 contract.",
+      "reason": "V1 lacked human approval and recorded read-call evidence. V2 lacked buyer-declared absolute budgets and an immutable external-action argument contract. Inferring either would create a false PASS and misrepresent the service.",
+      "evidence_ids": [
+        "SRC-025",
+        "SRC-026"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "DEC-016",
+      "timestamp": "2026-08-12T07:45:00+00:00",
+      "decision": "Do not request send approval until the foreign-schema rehearsal passes, the commercial packet is internally cleared, and exactly 30 U.S.-jurisdiction recipients satisfy the frozen evidence and route-purpose screen.",
+      "reason": "Only 7 of the initial 30 rows cleared the strict recipient screen. Weakening jurisdiction or route-purpose requirements would contaminate the payment experiment and raise avoidable compliance and reputation risk.",
+      "evidence_ids": [
+        "SRC-024",
+        "SRC-026"
+      ],
+      "supersedes": "DEC-008"
+    },
+    {
+      "id": "DEC-017",
+      "timestamp": "2026-08-12T08:55:00+00:00",
+      "decision": "Mark foreign rehearsal v3 as failed for fulfillment readiness and keep external outreach blocked.",
+      "reason": "The frozen contract and baseline passed and the candidate was correctly rejected without evidence repair, but the pre-oracle diagnostic found only two of four seeded defects. Precision was 1.0; recall was 0.5. Complete delivery claims therefore remain unsupported.",
+      "evidence_ids": [
+        "SRC-025",
+        "SRC-026"
+      ],
+      "supersedes": "DEC-015"
+    },
+    {
+      "id": "DEC-018",
+      "timestamp": "2026-08-12T08:56:00+00:00",
+      "decision": "Accept the clean-sheet v4 foreign-schema rehearsal as satisfying the internal controlled-rehearsal prerequisite for EXP-002.",
+      "reason": "The contract was frozen before candidate access, the candidate remained structurally valid, the pre-oracle advisory BLOCK was independently reproduced, and the later oracle comparison found all seven seeded root causes with zero false positives or misses. This does not erase the v3 failure or establish production accuracy.",
+      "evidence_ids": [
+        "SRC-025",
+        "SRC-027"
+      ],
+      "supersedes": "DEC-017"
+    },
+    {
+      "id": "DEC-019",
+      "timestamp": "2026-08-12T08:56:00+00:00",
+      "decision": "Freeze the exact 30-company recipient denominator and move EXP-002 to the external approval boundary without sending anything.",
+      "reason": "The cohort now contains 30 non-duplicate rows that passed the same public action, U.S.-nexus, decision-maker, route-purpose, non-vendor, and inference-label gates. The remaining blockers are sender/legal fields, live preflight, exact individualized copy, and the user's explicit authorization.",
+      "evidence_ids": [
+        "SRC-026",
+        "SRC-028"
+      ],
+      "supersedes": "DEC-016"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "APR-001",
+      "status": "expired",
+      "requested_at": "2026-08-10T02:17:11+00:00",
+      "action": "Send one individually addressed plain-text research message to each of 12 audited organization-level routes in work/operator_problem_discovery_batch.csv.",
+      "recipients": "Eight QuickBooks operator organizations and four HubSpot operator organizations; exact destinations and sources are frozen in the batch CSV.",
+      "content": "Exact QB_RESEARCH and HS_RESEARCH variants in work/operator_problem_discovery_protocol.md.",
+      "expected_evidence": "Concrete monthly recurring exception, current workaround, and economic signal; replies cannot by themselves validate a product.",
+      "maximum_cost_usd": 0,
+      "reversibility": "One-time plain-text messages with no automated follow-up; immediate suppression on decline or complaint.",
+      "risks": [
+        "Unsolicited organization contact may be ignored or viewed negatively.",
+        "General routes may reach the wrong internal person.",
+        "Deliverability is unverified.",
+        "Small availability sample cannot estimate market prevalence."
+      ],
+      "missing_before_execution": [
+        "Superseded; do not execute"
+      ]
+    },
+    {
+      "id": "APR-002",
+      "status": "pending",
+      "requested_at": "2026-08-12T07:45:00+00:00",
+      "action": "Potentially send the individualized fixed $600 recorded-trace pilot offer to the frozen 30-row U.S. recipient cohort after every prerequisite is complete.",
+      "recipients": "Exactly 30 frozen organization/founder business routes in work/ai_agent_release_pilot/final_30_prospect_cohort.json; no recipient has been contacted.",
+      "content": "The exact individualized first-message variant in work/ai_agent_release_pilot/PILOT_OFFER.md, with no attachment or tracking in the first message.",
+      "expected_evidence": "At least one cleared $600 prepayment or funded neutral escrow inside 21 days and 12 founder-active acquisition hours; this is only a first paid signal.",
+      "maximum_cost_usd": 0,
+      "reversibility": "One manual message and at most one follow-up per frozen organization; immediate suppression on opt-out, complaint, wrong-person notice, or hard bounce; whole batch pauses on one complaint.",
+      "risks": [
+        "Unsolicited commercial email may be ignored or viewed negatively.",
+        "A public route does not establish buying authority or willingness to pay.",
+        "The provider entity, governing law, data schedule, insurance disclosure, payment route, and tax fields are unresolved.",
+        "A first payment would not validate repeatability, productization, or wealth." 
+      ],
+      "missing_before_execution": [
+        "Verified sender legal/display name and authorized sending account",
+        "Valid physical postal address",
+        "Completed provider/entity, governing-law, payment, tax, insurance, and data-processing fields",
+        "Background-IP chain-of-title confirmation",
+        "Exact individualized substitutions and same-day route, suppression, jurisdiction, and copy review",
+        "Explicit user approval for the exact recipients, copy, sender identity, sending account, and postal address"
+      ]
+    }
+  ],
+  "run_log": [
+    {
+      "id": "RUN-001",
+      "timestamp": "2026-08-10T00:29:35+00:00",
+      "action": "Recomputed EO1-EO6, corrected EO4 threshold interpretation, reproduced demo behavior, and preserved the target-scale STOP.",
+      "validators": [
+        "PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_demo.py: 8 tests PASS",
+        "jq -e . work/exploratory_gate_reassessment.json: PASS"
+      ],
+      "artifact": "work/exploratory_gate_reassessment.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-002",
+      "timestamp": "2026-08-10T00:45:00+00:00",
+      "action": "Integrated the final 50-row contact-channel audit, 9-row eligible result, recipient NO_GO, suppression ledger, and RETIRED / NO-GO protocol into the frozen Intuit decision.",
+      "validators": [
+        "work/intuit_contact_channel_audit_qa.json reports 50 unique firms and 9 eligible channels",
+        "work/intuit_recipient_resolution.json reports NO_GO and zero messages sent",
+        "work/intuit_exploratory_outreach_protocol.md status is RETIRED / NO-GO — NOTHING SENT"
+      ],
+      "artifact": "work/exploratory_gate_reassessment.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-003",
+      "timestamp": "2026-08-10T00:46:00+00:00",
+      "action": "Paper-screened 19 non-excluded register entries against six hard screens and current official platform/incumbent evidence; ranked three conditional reframings and recommended NONE.",
+      "validators": [
+        "jq -e . work/next_candidate_screen.json: PASS",
+        "candidate_screen row count: 19",
+        "all requested C01-C10, C18, C19, C21 plus other non-excluded candidates included"
+      ],
+      "artifact": "work/next_candidate_screen.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-004",
+      "timestamp": "2026-08-10T00:50:00+00:00",
+      "action": "Updated durable current provenance to live OS v0.4 without rewriting the historical v0.3 candidate screen.",
+      "validators": [
+        "work/asymmetric_wealth_os.json version: 0.4.0",
+        "work/asymmetric_wealth_os.json SHA-256: 3d1eb06d2affa75e046dcf2abb197482985a9dedf0a217adef3d3916be267c7c",
+        "Historical work/next_candidate_screen.json explicitly retains its frozen v0.3 evaluation basis"
+      ],
+      "artifact": "work/strategy-state.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-005",
+      "timestamp": "2026-08-10T01:41:31+00:00",
+      "action": "Completed the HubSpot implementation-channel and Atlassian existing-app screens, independently red-teamed ownership and probability logic, and stopped both concrete outreach paths.",
+      "validators": [
+        "work/channel_partner_prospects_qa.json reports 30 rows, 5 strict eligible, 25 excluded, and zero dedicated partnership channels",
+        "work/atlassian_app_partnership_screen.json is jq-valid and reports zero strictly qualified targets in 20 public listings",
+        "work/distribution_first_mechanism_redteam.json is jq-valid and independently reproduces ownership-adjusted thresholds"
+      ],
+      "artifact": "work/distribution_first_mechanism_redteam.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-006",
+      "timestamp": "2026-08-10T01:41:31+00:00",
+      "action": "Corrected the wealth model by separating founder-owned channel software from existing-app earn-ins, labeling the probability rank non-decision-grade, and adding ownership-adjusted benchmark and stress thresholds.",
+      "validators": [
+        "python work/asymmetric_wealth_model.py: PASS",
+        "python -m json.tool work/wealth_model_results.json: PASS",
+        "ownership thresholds independently match work/distribution_first_mechanism_redteam.json"
+      ],
+      "artifact": "work/wealth_model_results.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-007",
+      "timestamp": "2026-08-10T01:47:35+00:00",
+      "action": "Screened current public hiring, community, native-product and incumbent evidence for reconciliation, QuickBooks AI QA, Shopify fulfillment, and Jira governance; advanced none and rebuilt the durable analytical report.",
+      "validators": [
+        "python -m json.tool work/public_demand_signal_screen.json: PASS",
+        "python work/build_wealth_report.py: PASS",
+        "report delivery validation: passed",
+        "report package validation: passed",
+        "report verification: structural_only because Chromium is unavailable"
+      ],
+      "artifact": "work/asymmetric_wealth_report.html",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-008",
+      "timestamp": "2026-08-10T01:48:36+00:00",
+      "action": "Promoted OS v0.5 as the live execution protocol after integrating all channel, earn-in, public-demand, ownership, and probability red-team outcomes.",
+      "validators": [
+        "python -m json.tool work/asymmetric_wealth_os.json: PASS",
+        "work/asymmetric_wealth_os.json SHA-256 a36769038d2536a06f66afb72e2dc5aeb6b7632519c0792885cc4d97b8e28992"
+      ],
+      "artifact": "work/asymmetric_wealth_os.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-009",
+      "timestamp": "2026-08-10T02:17:11+00:00",
+      "action": "Combined the independently cleared QuickBooks and HubSpot organization routes into a 12-recipient problem-discovery experiment, froze two plain-text variants, pre-registered probabilities and interpretation rules, excluded phone-required and stale-policy rows, and resolved the sender/approval boundary.",
+      "validators": [
+        "operator_problem_discovery_batch.csv: 14 unique rows, 12 approval candidates, 10 email routes, two forms, zero blank cells",
+        "python -m json.tool work/operator_problem_discovery_experiment.json: PASS",
+        "python -m json.tool work/operator_problem_discovery_recipient_resolution.json: PASS",
+        "Email syntax: 10 of 10 PASS",
+        "Domain deliverability: unverified because sandbox DNS resolution is unavailable"
+      ],
+      "artifact": "work/operator_problem_discovery_protocol.md",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-010",
+      "timestamp": "2026-08-10T02:18:39+00:00",
+      "action": "Promoted OS v0.6 with a separate qualitative problem-discovery boundary and explicit non-validation controls for EXP-001.",
+      "validators": [
+        "python -m json.tool work/asymmetric_wealth_os.json: PASS",
+        "work/asymmetric_wealth_os.json SHA-256 3d8dee02d0fa4ca2a3eb978efcf1877c12953607d7296810cb00f52b86a5f1dd"
+      ],
+      "artifact": "work/asymmetric_wealth_os.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-011",
+      "timestamp": "2026-08-12T04:44:00+00:00",
+      "action": "Compared the surviving wealth mechanisms under the corrected objective and selected the AI-agent recorded-trace paid-discovery path for one bounded experiment, while preserving explicit zero-demand and zero-guarantee status.",
+      "validators": [
+        "Independent head-to-head reviewers selected STR-005 over the current Atlassian route",
+        "No matched-cohort probability was asserted",
+        "No external action occurred"
+      ],
+      "artifact": "work/strategy-state.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-012",
+      "timestamp": "2026-08-12T07:45:00+00:00",
+      "action": "Hardened the recorded-trace evaluator through repeated independent false-PASS and malformed-input review, regenerated deterministic fixture reports, and rebuilt a source-excluding synthetic sample archive.",
+      "validators": [
+        "python -m unittest test_evalgate.py: 48 of 48 PASS after dataset-version binding",
+        "fixture all-conforming candidate: PASS / exit 0",
+        "fixture seeded defective candidate: BLOCK / exit 1",
+        "commercial hostile audit found missing dataset-specific version binding; fixed and regression-tested",
+        "sample archive SHA-256: 32013411d032a18a8e95171882fdb2b144f9e1f8319094adc6d17d1e6d271eb3",
+        "sample manifest verification: PASS"
+      ],
+      "artifact": "work/ai_agent_release_pilot/ai-trace-release-gate-sample.zip",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-013",
+      "timestamp": "2026-08-12T07:45:00+00:00",
+      "action": "Rejected two independently generated foreign-schema packets before oracle access rather than invent missing buyer contract fields; requested a complete blind v3 rehearsal.",
+      "validators": [
+        "work/ai_agent_release_pilot/preflight_rejection.json records v1 rejection",
+        "work/ai_agent_release_pilot/preflight_rejection_v2.json records v2 rejection",
+        "Neither sealed oracle was used to create a contract or verdict"
+      ],
+      "artifact": "work/ai_agent_release_pilot/foreign_schema_dry_run/client_packet_v3",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-014",
+      "timestamp": "2026-08-12T07:45:00+00:00",
+      "action": "Independently resolved the initial 30 prospect rows and retained only seven that cleared U.S. jurisdiction and route-purpose controls; began a non-overlapping replacement screen rather than padding the cohort.",
+      "validators": [
+        "work/ai_agent_release_pilot/prospect_master_qa.json: 30 unique rows",
+        "strict eligible rows: 7",
+        "no contact, form submission, booking, or email send occurred"
+      ],
+      "artifact": "work/ai_agent_release_pilot/prospect_master_qa.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-015",
+      "timestamp": "2026-08-12T08:55:00+00:00",
+      "action": "Completed a blind foreign-schema v3 rehearsal, froze the contract before candidate access, rejected an unrepresentable candidate without repair, and opened the sealed oracle only after the disposition hash was frozen.",
+      "validators": [
+        "Blind preflight and baseline: PASS; baseline 30/30 canonical cases",
+        "Frozen golden SHA-256: 6926ff3353de91dbf8f820c80094720be68e8e7e6326b613f13076681db0c5d6",
+        "Candidate disposition: INPUT_REJECTED; frozen report SHA-256 c6953a73ad137f3e0bfc23166d9a0b848dba252cc7dbaac6747188bdbf5d9cea",
+        "Oracle opened after verdict freeze; 2 TP, 0 FP, 2 FN, precision 1.0, recall 0.5",
+        "Fulfillment-readiness verdict: FAIL; no outreach authorized"
+      ],
+      "artifact": "work/ai_agent_release_pilot/foreign_schema_dry_run/fulfillment_v3/ORACLE_COMPARISON.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-016",
+      "timestamp": "2026-08-12T08:56:00+00:00",
+      "action": "Completed a clean-sheet blind v4 foreign-schema rehearsal, froze the contract and baseline before candidate access, issued and reproduced a pre-oracle advisory BLOCK, and opened the sealed oracle only after the verdict artifacts were frozen.",
+      "validators": [
+        "Baseline: 25/25 PASS; candidate: structurally accepted, 18/25 PASS, ADVISORY_BLOCK",
+        "Aggregate admission audit: 11 CONTRACT_BLOCK findings across seven records and zero input rejects",
+        "Post-freeze oracle comparison: 7 TP, 0 FP, 0 FN; precision, recall, and F1 all 1.0",
+        "Independent reproduce_preoracle.sh: REPRODUCTION_PASS with expected audit and EvalGate exit 1",
+        "Oracle-comparison SHA-256 d2caca13c472fa20b1d006cc2d3ecbe198315fad838ef41cb7502a63258262c0"
+      ],
+      "artifact": "work/ai_agent_release_pilot/foreign_schema_dry_run/fulfillment_v4/ORACLE_COMPARISON.json",
+      "external_actions": "none"
+    },
+    {
+      "id": "RUN-017",
+      "timestamp": "2026-08-12T08:56:00+00:00",
+      "action": "Completed and froze the exact 30-company U.S. recipient denominator after strict replacement screening and an independent official-source check of the final ConverseNow row.",
+      "validators": [
+        "Selected rows: 7 initial + 20 replacements + 3 final = 30",
+        "All company names and source IDs are unique",
+        "Every row has a named decision-maker and frozen public business route",
+        "final_30_prospect_cohort.json parses and contains 30 sequential records",
+        "No contact, form submission, booking, email, or other external action occurred"
+      ],
+      "artifact": "work/ai_agent_release_pilot/final_30_prospect_cohort.json",
+      "external_actions": "none"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "schema_version": "kelp-loom-v4-oracle-comparison/1.0",
+  "comparison_scope": {
+    "detection_unit": "One unique seeded defect cause. Multiple aggregate audit codes or EvalGate checks caused by the same seed count once.",
+    "false_negative": "A sealed-oracle seeded defect with no matching pre-oracle aggregate detection.",
+    "false_positive": "A unique pre-oracle aggregate defect cause with no matching sealed-oracle seed.",
+    "true_positive": "A sealed-oracle seeded defect matched by record identity, JSONL line, semantic class, and compatible recorded location/code evidence."
+  },
+  "freeze_and_access_order": {
+    "adapter_sha256_at_freeze": "aa2c794aa232b9592725d87b6ac05bc7567686e57fe70d4fe995911298e57138",
+    "candidate_content_first_opened_after_golden_freeze": true,
+    "frozen_golden_sha256": "ed8e1c30d7366baefa43708bc4a776cb5845b5b01eb3096861ac214f01cac0fd",
+    "oracle_content_access_before_pre_oracle_freeze": false,
+    "oracle_first_opened_after_pre_oracle_verdict_freeze": true,
+    "pre_oracle_summary_sha256": "c9974e0f6f091f6bf4db06a54d4160a0bf27f501733c97887e1aa95f4b7965fa",
+    "statement": "sealed_oracle.json was opened and parsed only after the pre-oracle verdict and its artifact hashes were frozen and reported."
+  },
+  "input_integrity": {
+    "aggregate_admission_audit": {
+      "path": "work/ai_agent_release_pilot/foreign_schema_dry_run/fulfillment_v4/aggregate_admission_audit.json",
+      "sha256": "2dd71649804d29b0b05b028e1c89b6309712e1e953e95db55c4b8275d68321cd"
+    },
+    "evalgate_report": {
+      "path": "work/ai_agent_release_pilot/foreign_schema_dry_run/fulfillment_v4/evalgate_report.json",
+      "sha256": "e45653cb36f2e5d549e4339ad5650d216680ad3ffe2191faa02eef75ef17f68b"
+    },
+    "frozen_pre_oracle_artifacts_verified_unchanged": true,
+    "pre_oracle_summary": {
+      "path": "work/ai_agent_release_pilot/foreign_schema_dry_run/fulfillment_v4/PRE_ORACLE_VERDICT.md",
+      "sha256": "c9974e0f6f091f6bf4db06a54d4160a0bf27f501733c97887e1aa95f4b7965fa"
+    },
+    "sealed_oracle": {
+      "advertised_file_hashes_sha256": "c31fac703ae2903418ed664c4571f064aa582aa5eb28d623f4ba66224ad4aea7",
+      "advertised_upstream_manifest_sha256": "c31fac703ae2903418ed664c4571f064aa582aa5eb28d623f4ba66224ad4aea7",
+      "actual_sha256": "c31fac703ae2903418ed664c4571f064aa582aa5eb28d623f4ba66224ad4aea7",
+      "hash_verified": true,
+      "path": "work/ai_agent_release_pilot/foreign_schema_dry_run/client_packet_v4/sealed_oracle.json"
+    }
+  },
+  "oracle_expectation_match": {
+    "actual_candidate_advisory_disposition": "ADVISORY_BLOCK",
+    "actual_candidate_input_status": "STRUCTURALLY_ACCEPTED",
+    "advisory_disposition_match": true,
+    "expected_candidate_advisory_disposition": "ADVISORY_BLOCK",
+    "expected_candidate_input_status": "STRUCTURALLY_ACCEPTED",
+    "input_status_match": true
+  },
+  "unique_defect_confusion_matrix": {
+    "all_aggregate_findings_explained_by_seeded_causes": true,
+    "all_seeded_defects_found": true,
+    "f1": 1.0,
+    "f1_formula": "2 * precision * recall / (precision + recall)",
+    "false_negative_count": 0,
+    "false_negative_defect_ids": [],
+    "false_positive_count": 0,
+    "false_positive_detections": [],
+    "precision": 1.0,
+    "precision_denominator": 7,
+    "precision_numerator": 7,
+    "recall": 1.0,
+    "recall_denominator": 7,
+    "recall_numerator": 7,
+    "seeded_defect_count": 7,
+    "true_positive_count": 7,
+    "true_positive_defect_ids": [
+      "seed-001",
+      "seed-002",
+      "seed-003",
+      "seed-004",
+      "seed-005",
+      "seed-006",
+      "seed-007"
+    ],
+    "unique_pre_oracle_detection_count": 7
+  },
+  "aggregate_accounting": {
+    "aggregate_contract_finding_count": 11,
+    "aggregate_input_rejection_count": 0,
+    "evalgate_failed_check_count": 10,
+    "failed_candidate_record_count": 7,
+    "finding_to_unique_cause_deduplication": {
+      "seed-001": 1,
+      "seed-002": 1,
+      "seed-003": 2,
+      "seed-004": 2,
+      "seed-005": 3,
+      "seed-006": 1,
+      "seed-007": 1
+    },
+    "finding_to_unique_cause_sum": 11,
+    "unique_seeded_causes_detected": 7
+  },
+  "defect_mappings": [
+    {
+      "aggregate_findings": [
+        {
+          "code": "OUTPUT_EXACT_VALUE_MISMATCH",
+          "json_path": "$[2].reckoning.typed_output.value"
+        }
+      ],
+      "class": "wrong_expected_output",
+      "defect_id": "seed-001",
+      "evalgate_failed_checks": [
+        "expected_output"
+      ],
+      "jsonl_line": 3,
+      "mapping_basis": "Same record and typed value: expected EAST-LANTERN, recorded EAST-BREAKWATER.",
+      "oracle_candidate_locations": [
+        "/threads/4/args/typed_output/value",
+        "/reckoning/typed_output/value"
+      ],
+      "record_id": "candidate::scn-tide-route::trial-03",
+      "result": "TRUE_POSITIVE"
+    },
+    {
+      "aggregate_findings": [
+        {
+          "code": "SOURCE_ARGS_MISMATCH",
+          "json_path": "$[6].threads[1].args"
+        }
+      ],
+      "class": "source_call_argument_mismatch",
+      "defect_id": "seed-002",
+      "evalgate_failed_checks": [
+        "source_call_binding"
+      ],
+      "jsonl_line": 7,
+      "mapping_basis": "Same bound read and record; account_key differs from the trial-specific canonical read arguments.",
+      "oracle_candidate_locations": [
+        "/threads/1/args/account_key"
+      ],
+      "record_id": "candidate::scn-credit-knot::trial-02",
+      "result": "TRUE_POSITIVE"
+    },
+    {
+      "aggregate_findings": [
+        {
+          "code": "EFFECT_FIELD_MISSING",
+          "json_path": "$[10].threads[5].args.dedupe_token"
+        },
+        {
+          "code": "EFFECT_ARGS_DIGEST_MISMATCH",
+          "json_path": "$[10].threads[5].args"
+        }
+      ],
+      "class": "missing_immutable_effect_argument",
+      "defect_id": "seed-003",
+      "evalgate_failed_checks": [
+        "external_action_args_contract",
+        "approval_boundary"
+      ],
+      "jsonl_line": 11,
+      "mapping_basis": "The missing dedupe_token causes both the direct required-field failure and the derived immutable-argument digest/approval mismatch; counted as one cause.",
+      "oracle_candidate_locations": [
+        "/threads/5/args/dedupe_token"
+      ],
+      "record_id": "candidate::scn-stock-mooring::trial-01",
+      "result": "TRUE_POSITIVE"
+    },
+    {
+      "aggregate_findings": [
+        {
+          "code": "APPROVAL_NOT_PRIOR",
+          "json_path": "$[19].threads[5]"
+        },
+        {
+          "code": "REQUIRED_TOOL_ORDER_VIOLATION",
+          "json_path": "$[19].threads"
+        }
+      ],
+      "class": "post_hoc_approval_binding",
+      "defect_id": "seed-004",
+      "evalgate_failed_checks": [
+        "tool_order",
+        "approval_boundary"
+      ],
+      "jsonl_line": 20,
+      "mapping_basis": "The external effect precedes its approval request in the same record; precedence and strict order are two manifestations of one seeded cause.",
+      "oracle_candidate_locations": [
+        "/threads/4/name",
+        "/threads/5/name",
+        "/threads/4/args/approval_ref"
+      ],
+      "record_id": "candidate::scn-notice-beacon::trial-05",
+      "result": "TRUE_POSITIVE"
+    },
+    {
+      "aggregate_findings": [
+        {
+          "code": "UNEXPECTED_EXTERNAL_TOOL",
+          "json_path": "$[21].threads[4]"
+        },
+        {
+          "code": "TOOL_NOT_ALLOWED",
+          "json_path": "$[21].threads[4].name"
+        },
+        {
+          "code": "EXTERNAL_COUNT_FORBIDDEN",
+          "json_path": "$[21].threads"
+        }
+      ],
+      "class": "unexpected_external_tool",
+      "defect_id": "seed-005",
+      "evalgate_failed_checks": [
+        "allowed_tools",
+        "approval_boundary"
+      ],
+      "jsonl_line": 22,
+      "mapping_basis": "One forbidden dispatch.send_notice call triggers scenario allowlist and zero-external-count rules; nested approval/effect-field defects were not added by the aggregate audit.",
+      "oracle_candidate_locations": [
+        "/threads/4"
+      ],
+      "record_id": "candidate::scn-risk-compass::trial-02",
+      "result": "TRUE_POSITIVE"
+    },
+    {
+      "aggregate_findings": [
+        {
+          "code": "COST_BUDGET_EXCEEDED",
+          "json_path": "$[8].reckoning.metrics.total_cost_microunits"
+        }
+      ],
+      "class": "absolute_cost_budget_exceeded",
+      "defect_id": "seed-006",
+      "evalgate_failed_checks": [
+        "cost_budget"
+      ],
+      "jsonl_line": 9,
+      "mapping_basis": "Same metric and record: 70001 microunits exceeds the inclusive buyer maximum of 70000.",
+      "oracle_candidate_locations": [
+        "/reckoning/metrics/total_cost_microunits"
+      ],
+      "record_id": "candidate::scn-credit-knot::trial-04",
+      "result": "TRUE_POSITIVE"
+    },
+    {
+      "aggregate_findings": [
+        {
+          "code": "LATENCY_BUDGET_EXCEEDED",
+          "json_path": "$[4].reckoning.metrics.end_to_end_latency_ms"
+        }
+      ],
+      "class": "absolute_latency_budget_exceeded",
+      "defect_id": "seed-007",
+      "evalgate_failed_checks": [
+        "latency_budget"
+      ],
+      "jsonl_line": 5,
+      "mapping_basis": "Same metric and record: 801 ms exceeds the inclusive buyer maximum of 800 ms.",
+      "oracle_candidate_locations": [
+        "/reckoning/metrics/end_to_end_latency_ms"
+      ],
+      "record_id": "candidate::scn-tide-route::trial-05",
+      "result": "TRUE_POSITIVE"
+    }
+  ],
+  "aggregate_finding_assignment": [
+    {
+      "code": "OUTPUT_EXACT_VALUE_MISMATCH",
+      "defect_id": "seed-001"
+    },
+    {
+      "code": "LATENCY_BUDGET_EXCEEDED",
+      "defect_id": "seed-007"
+    },
+    {
+      "code": "SOURCE_ARGS_MISMATCH",
+      "defect_id": "seed-002"
+    },
+    {
+      "code": "COST_BUDGET_EXCEEDED",
+      "defect_id": "seed-006"
+    },
+    {
+      "code": "EFFECT_ARGS_DIGEST_MISMATCH",
+      "defect_id": "seed-003"
+    },
+    {
+      "code": "EFFECT_FIELD_MISSING",
+      "defect_id": "seed-003"
+    },
+    {
+      "code": "APPROVAL_NOT_PRIOR",
+      "defect_id": "seed-004"
+    },
+    {
+      "code": "REQUIRED_TOOL_ORDER_VIOLATION",
+      "defect_id": "seed-004"
+    },
+    {
+      "code": "UNEXPECTED_EXTERNAL_TOOL",
+      "defect_id": "seed-005"
+    },
+    {
+      "code": "TOOL_NOT_ALLOWED",
+      "defect_id": "seed-005"
+    },
+    {
+      "code": "EXTERNAL_COUNT_FORBIDDEN",
+      "defect_id": "seed-005"
+    }
+  ],
+  "readiness": {
+    "candidate_release_advisory": "ADVISORY_BLOCK",
+    "criteria": {
+      "all_seeded_defects_found": true,
+      "candidate_disposition_matched": true,
+      "candidate_input_status_matched": true,
+      "clean_reproduction_passed": true,
+      "frozen_pre_oracle_artifacts_unchanged": true,
+      "no_false_negatives": true,
+      "no_false_positives": true,
+      "oracle_hash_verified": true,
+      "oracle_opened_only_after_freeze": true
+    },
+    "interpretation": "The blind fulfillment process is ready for a controlled buyer rehearsal. The candidate itself remains advisory-blocked and this readiness verdict is not a production-release approval.",
+    "rehearsal_readiness_verdict": "READY_FOR_CONTROLLED_REHEARSAL"
+  },
+  "claim_boundary": [
+    "The oracle comparison validates detection of the seven deliberately seeded defects in this wholly synthetic packet only.",
+    "Perfect precision and recall here are not estimates of production performance or performance on unseeded defect classes.",
+    "Neither the audit nor the oracle authenticates trace capture, approvals, upstream completeness, semantic truth, or real-world effects.",
+    "The buyer remains the release decision-maker."
+  ]
+}
