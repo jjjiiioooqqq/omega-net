@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "as_of_date": "2026-08-11",
+  "status": "FROZEN_NOT_CONTACTED",
+  "purpose": "Exact denominator for EXP-002, the fixed $600 recorded-trace structural pilot.",
+  "cohort_rules": {
+    "exact_count": 30,
+    "required_gates": [
+      "official first-party evidence of a consequential tool-using AI action",
+      "named decision-maker",
+      "U.S. entity or governing-law nexus",
+      "public general or founder business-inquiry route compatible with a proposal",
+      "not positioned as an evaluation or security vendor",
+      "release risk explicitly labeled as an inference",
+      "no duplicate company"
+    ],
+    "route_compatibility_is_not_consent": true,
+    "no_private_enrichment": true,
+    "no_replacement_after_first_send": true,
+    "no_outreach_sent": true
+  },
+  "source_freeze": [
+    {
+      "path": "work/ai_agent_release_pilot/prospect_master_qa.json",
+      "sha256": "6c30e04b1f75af2010a8971beaf874d908317b3872f33e5d33e125746176be4f",
+      "selected_rows": 7
+    },
+    {
+      "path": "work/ai_agent_release_pilot/replacement_us_prospects.json",
+      "sha256": "47674ec92a7d7cbb8bc250471e5d886a73bc6d7aadc3e87c93e462a8affa611d",
+      "selected_rows": 20
+    },
+    {
+      "path": "work/ai_agent_release_pilot/final_three_us_prospects.json",
+      "sha256": "2d2ca068c0cb871846acb494d6c40a6f5d754e111fa82b570d4fd32bbdcdd864",
+      "selected_rows": 3
+    }
+  ],
+  "send_blockers": [
+    "verified sender legal and display name",
+    "authorized sending account",
+    "valid physical postal address",
+    "completed provider/entity, governing-law, payment, tax, insurance, retention, and data-processing fields",
+    "Background-IP chain-of-title confirmation",
+    "same-day route, jurisdiction, suppression, and exact-copy review",
+    "explicit user approval of exact recipients, individualized substitutions, sender identity, sending account, and postal address"
+  ],
+  "redaction_note": "Person names and contact routes removed before committing to the repository; the full frozen cohort with named decision-makers and routes remains only in the original working files. Company identity and provenance are preserved.",
+  "recipients": [
+    {
+      "sequence": 1,
+      "source_id": "ROOT-04",
+      "company": "Arden"
+    },
+    {
+      "sequence": 2,
+      "source_id": "ROOT-05",
+      "company": "Copperlane"
+    },
+    {
+      "sequence": 3,
+      "source_id": "ROOT-09",
+      "company": "Saldor"
+    },
+    {
+      "sequence": 4,
+      "source_id": "ROOT-10",
+      "company": "Seals AI"
+    },
+    {
+      "sequence": 5,
+      "source_id": "A-005",
+      "company": "Artisan"
+    },
+    {
+      "sequence": 6,
+      "source_id": "B-005",
+      "company": "Hexa"
+    },
+    {
+      "sequence": 7,
+      "source_id": "B-009",
+      "company": "Humoniq"
+    },
+    {
+      "sequence": 8,
+      "source_id": "REPL-01",
+      "company": "SUPERAGENT AI"
+    },
+    {
+      "sequence": 9,
+      "source_id": "REPL-02",
+      "company": "Chipp"
+    },
+    {
+      "sequence": 10,
+      "source_id": "REPL-03",
+      "company": "Ontora"
+    },
+    {
+      "sequence": 11,
+      "source_id": "REPL-04",
+      "company": "shortlistd.io"
+    },
+    {
+      "sequence": 12,
+      "source_id": "REPL-05",
+      "company": "BackOps AI"
+    },
+    {
+      "sequence": 13,
+      "source_id": "REPL-06",
+      "company": "Rebolt"
+    },
+    {
+      "sequence": 14,
+      "source_id": "REPL-07",
+      "company": "Assort Health"
+    },
+    {
+      "sequence": 15,
+      "source_id": "REPL-08",
+      "company": "Vooma"
+    },
+    {
+      "sequence": 16,
+      "source_id": "REPL-09",
+      "company": "Ledge"
+    },
+    {
+      "sequence": 17,
+      "source_id": "REPL-10",
+      "company": "Cursor"
+    },
+    {
+      "sequence": 18,
+      "source_id": "REPL-11",
+      "company": "Cranston AI"
+    },
+    {
+      "sequence": 19,
+      "source_id": "REPL-12",
+      "company": "Deeptrace"
+    },
+    {
+      "sequence": 20,
+      "source_id": "REPL-13",
+      "company": "Maxi"
+    },
+    {
+      "sequence": 21,
+      "source_id": "REPL-14",
+      "company": "Hyperbrowser"
+    },
+    {
+      "sequence": 22,
+      "source_id": "REPL-15",
+      "company": "Loman AI"
+    },
+    {
+      "sequence": 23,
+      "source_id": "REPL-16",
+      "company": "Phonely"
+    },
+    {
+      "sequence": 24,
+      "source_id": "REPL-17",
+      "company": "Rillet"
+    },
+    {
+      "sequence": 25,
+      "source_id": "REPL-18",
+      "company": "Vic.ai"
+    },
+    {
+      "sequence": 26,
+      "source_id": "REPL-19",
+      "company": "MindStudio"
+    },
+    {
+      "sequence": 27,
+      "source_id": "REPL-20",
+      "company": "11x AI"
+    },
+    {
+      "sequence": 28,
+      "source_id": "FINAL-01",
+      "company": "Yuma AI"
+    },
+    {
+      "sequence": 29,
+      "source_id": "FINAL-02",
+      "company": "Veritus"
+    },
+    {
+      "sequence": 30,
+      "source_id": "FINAL-03",
+      "company": "ConverseNow"
+    }
+  ]
+}
